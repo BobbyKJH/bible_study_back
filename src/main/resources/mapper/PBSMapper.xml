@@ -7,16 +7,23 @@
         select * from pbs order by id desc
     </select>
     <!-- 커뮤니티 페이지 ( 10개 ) -->
-    <select id="findByPage" resultType="com.bible.bible_study_back.dto.PostDTO">
-        select * from post order by id desc limit #{count} offset #{offset}
+    <select id="findByNotice" resultType="com.bible.bible_study_back.dto.PBSDTO">
+        select id, book, chapter, verse, content, name, date from pbs order by id desc limit #{page} offset #{offset}
     </select>
     <!-- 상세 페이지 -->
-    <select id="findOne" resultType="com.bible.bible_study_back.dto.PostDTO">
-        select * from post where id = #{id}
+    <select id="findOne" resultType="com.bible.bible_study_back.dto.PBSDTO">
+        select * from pbs where id = #{id}
     </select>
+    <!-- 월별 개수 -->
+<!--    <select id="findOne" resultType="com.bible.bible_study_back.dto.PostDTO">-->
+<!--        select * from post where id = #{id}-->
+<!--    </select>-->
     <!-- PBS 생성 -->
-    <insert id="save">
-        insert into post(title, content) values (#{post.title}, #{post.content})
+    <insert id="createPBS">
+        insert
+        into pbs(book, chapter, verse, content, name, user, date)
+        values
+            (#{pbs.book}, #{pbs.chapter}, #{pbs.verse}, #{pbs.content}, #{pbs.name}, #{pbs.user}, #{pbs.date});
     </insert>
 
 

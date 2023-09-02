@@ -14,6 +14,19 @@ public class PBSDTO {
     Date updateAt;
     String date;
 
+    public PBSDTO(Integer id, String book, Integer chapter, Integer verse, String content, String name, String user, Date createAt, Date updateAt, String date) {
+        this.id = id;
+        this.book = book;
+        this.chapter = chapter;
+        this.verse = verse;
+        this.content = content;
+        this.name = name;
+        this.user = user;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
+        this.date = date;
+    }
+
     public Integer getId() {
         return id;
     }
