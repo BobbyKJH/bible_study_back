@@ -34,7 +34,7 @@ public class PBSController {
     /** 상세 페이지 */
     @GetMapping("/pbs/{id}")
     public PBSDTO getPBSOne(@PathVariable Integer id){
-        PBSDTO result = pbsService.findOne(id);
+        PBSDTO result = pbsService.findPBS(id);
 
         return result;
     }
@@ -43,12 +43,13 @@ public class PBSController {
 
     /** pbs 생성 */
     @PostMapping("/pbs")
-    public String createPBS(@RequestBody PBSDTO pbsDTO){
-        PBSDTO PBSCreate = new PBSDTO(
+    public PBSDTO createPBS(@RequestBody PBSDTO pbsDTO){
+        PBSDTO createPBS = new PBSDTO(
                 pbsDTO.getId(),
                 pbsDTO.getBook(),
                 pbsDTO.getChapter(),
-                pbsDTO.getVerse(),
+                pbsDTO.getStartVerse(),
+                pbsDTO.getEndVerse(),
                 pbsDTO.getContent(),
                 pbsDTO.getName(),
                 pbsDTO.getUser(),
@@ -56,9 +57,36 @@ public class PBSController {
                 pbsDTO.getUpdateAt(),
                 pbsDTO.getDate()
         );
-        pbsService.createPBS(PBSCreate);
+        pbsService.createPBS(createPBS);
+        System.out.println(pbsService.createPBS(createPBS));
+
+        return createPBS;
+    }
+
+    /** 수정 */
+    @PutMapping("/pbs")
+    public String updatePBS(@RequestBody PBSDTO pbsDTO){
+        PBSDTO updatePBS = new PBSDTO(
+                pbsDTO.getId(),
+                pbsDTO.getBook(),
+                pbsDTO.getChapter(),
+                pbsDTO.getStartVerse(),
+                pbsDTO.getEndVerse(),
+                pbsDTO.getContent(),
+                pbsDTO.getName(),
+                pbsDTO.getUser(),
+                pbsDTO.getCreateAt(),
+                pbsDTO.getUpdateAt(),
+                pbsDTO.getDate()
+        );
+        pbsService.updatePBS(updatePBS);
 
         return "success";
     }
 
+    /** 삭제 */
+    @DeleteMapping("/pbs/{id}")
+    public void deletePBS(@PathVariable Integer id){
+        pbsService.deletPBS(id);
+    }
 }

@@ -6,7 +6,8 @@ public class PBSDTO {
     Integer id;
     String book;
     Integer chapter;
-    Integer verse;
+    Integer startVerse;
+    Integer endVerse;
     String content;
     String name;
     String user;
@@ -14,11 +15,12 @@ public class PBSDTO {
     Date updateAt;
     String date;
 
-    public PBSDTO(Integer id, String book, Integer chapter, Integer verse, String content, String name, String user, Date createAt, Date updateAt, String date) {
+    public PBSDTO(Integer id, String book, Integer chapter, Integer startVerse, Integer endVerse, String content, String name, String user, Date createAt, Date updateAt, String date) {
         this.id = id;
         this.book = book;
         this.chapter = chapter;
-        this.verse = verse;
+        this.startVerse = startVerse;
+        this.endVerse = endVerse;
         this.content = content;
         this.name = name;
         this.user = user;
@@ -51,12 +53,20 @@ public class PBSDTO {
         this.chapter = chapter;
     }
 
-    public Integer getVerse() {
-        return verse;
+    public Integer getStartVerse() {
+        return startVerse;
     }
 
-    public void setVerse(Integer verse) {
-        this.verse = verse;
+    public void setStartVerse(Integer startVerse) {
+        this.startVerse = startVerse;
+    }
+
+    public Integer getEndVerse() {
+        return endVerse;
+    }
+
+    public void setEndVerse(Integer endVerse) {
+        this.endVerse = endVerse;
     }
 
     public String getContent() {

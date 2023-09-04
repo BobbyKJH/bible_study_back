@@ -26,8 +26,8 @@ public class PBSService {
         return list;
     }
 
-    public PBSDTO findOne(Integer id){
-        PBSDTO result = pbsMapper.findOne(id);
+    public PBSDTO findPBS(Integer id){
+        PBSDTO result = pbsMapper.findPBS(id);
         return  result;
     }
 
@@ -36,4 +36,16 @@ public class PBSService {
 
         return result == 1;
     }
+
+    public boolean updatePBS(PBSDTO pbs){
+        Integer result = pbsMapper.updatePBS(pbs);
+
+        return result == 1;
+    }
+
+    public void deletPBS(Integer id){
+//        PBSDTO result = pbsMapper.deletePBS(id);
+        pbsMapper.deletePBS(id);
+    }
+
 }

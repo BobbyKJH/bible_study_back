@@ -15,8 +15,14 @@ public interface PBSMapper {
     List<PBSDTO> findByNotice(@Param("page") Integer page, @Param("offset") Integer offset);
 
     /** 상세페이지 */
-    PBSDTO findOne(@Param("id") Integer id);
+    PBSDTO findPBS(@Param("id") Integer id);
 
     /** 생성 */
     Integer createPBS(@Param("pbs") PBSDTO pbs);
+
+    /** 수정 */
+    Integer updatePBS(@Param("pbs") PBSDTO pbs);
+
+    /** 삭제 */
+    PBSDTO deletePBS(@Param("id") Integer id);
 }
