@@ -14,8 +14,13 @@ public class PBSService {
     public PBSService(PBSMapper pbsMapper) {
         this.pbsMapper = pbsMapper;
     }
-
+    
+    /** 모든 PBS 정보 */
     public List<PBSDto> getAllPBS(){
-        return pbsMapper.findAll();
+        return pbsMapper.findAllPBS();
+    }
+    /** 10개씩 PBS 정보 (최신순) */
+    public List<PBSDto> getPBSByPage(Integer page, Integer size){
+        return pbsMapper.findByPagePBS(size, (page - 1) * size);
     }
 }

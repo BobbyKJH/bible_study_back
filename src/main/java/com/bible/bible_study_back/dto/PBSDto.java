@@ -10,22 +10,20 @@ public class PBSDto {
     Integer startVerse;
     Integer endVerse;
     String content;
-    Boolean show;
-    String name;
+    String userName;
     String userId;
     Date createAt;
     Date updateAt;
     Date date;
 
-    public PBSDto(Integer id, String book, Integer chapter, Integer startVerse, Integer endVerse, String content, Boolean show, String name, String userId, Date createAt, Date updateAt, Date date) {
+    public PBSDto(Integer id, String book, Integer chapter, Integer startVerse, Integer endVerse, String content, String userName, String userId, Date createAt, Date updateAt, Date date) {
         this.id = id;
         this.book = book;
         this.chapter = chapter;
         this.startVerse = startVerse;
         this.endVerse = endVerse;
         this.content = content;
-        this.show = show;
-        this.name = name;
+        this.userName = userName;
         this.userId = userId;
         this.createAt = createAt;
         this.updateAt = updateAt;
@@ -80,20 +78,12 @@ public class PBSDto {
         this.content = content;
     }
 
-    public Boolean getShow() {
-        return show;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setShow(Boolean show) {
-        this.show = show;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getUserId() {
