@@ -38,6 +38,20 @@
         );
     </insert>
 
+    <update id="updatePBS">
+        update pbs set
+                       book = #{pbs.book},
+                       chapter = #{pbs.chapter},
+                       startVerse = #{pbs.startVerse},
+                       endVerse = #{pbs.endVerse},
+                       content = #{pbs.content},
+                       userName = #{pbs.userName},
+                       userId = #{pbs.userId},
+                       date = #{pbs.date},
+                       showData = #{pbs.showData}
+        where id = #{pbs.id};
+    </update>
+
     <!--PBS 삭제-->
     <delete id="deletePBS">
         delete from pbs where id=#{id};

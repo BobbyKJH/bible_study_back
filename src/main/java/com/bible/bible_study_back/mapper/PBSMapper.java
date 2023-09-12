@@ -17,9 +17,12 @@ public interface PBSMapper {
    /** 상세 페이지 */
    PBSDto findByOne(@Param("id") Integer id);
 
-   /** 생성 */
+   /** PBS 생성 */
    Integer createPBS(@Param("pbs") PBSDto pbs);
 
-   /** 삭제 */
+   /** PBS 생성 */
+    Integer updatePBS(@Param("pbs") PBSDto pbs);
+
+   /** PBS 삭제 */
    Integer deletePBS(@Param("id") Integer id);
 }

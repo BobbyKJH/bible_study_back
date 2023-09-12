@@ -35,6 +35,13 @@ public class PBSService {
         return result == 1;
     }
 
+    /** PBS 수정 */
+    public boolean updatePBS(PBSDto pbs){
+        Integer result = pbsMapper.updatePBS(pbs);
+
+        return result == 1;
+    }
+
     /** PBS 삭제 */
     public boolean deletePBS(Integer id){
         Integer result = pbsMapper.deletePBS(id);

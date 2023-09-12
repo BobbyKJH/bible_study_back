@@ -61,7 +61,29 @@ public class PBSController {
         return "success";
     }
 
-    /** 삭제 */
+    /** PBS 수정 */
+    @PutMapping("/pbs")
+    public String updatePBS(@RequestBody PBSDto pbs){
+        PBSDto pbsDto = new PBSDto(
+                pbs.getId(),
+                pbs.getBook(),
+                pbs.getChapter(),
+                pbs.getStartVerse(),
+                pbs.getEndVerse(),
+                pbs.getContent(),
+                pbs.getUserName(),
+                pbs.getUserId(),
+                pbs.getCreateAt(),
+                pbs.getUpdateAt(),
+                pbs.getDate(),
+                pbs.getShowData()
+        );
+        pbsService.updatePBS(pbsDto);
+
+        return "put success";
+    }
+
+    /** PBS 삭제 */
     @DeleteMapping("/pbs/{id}")
     public String deletePBS(@PathVariable("id") Integer id){
         pbsService.deletePBS(id);
