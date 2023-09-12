@@ -2,7 +2,7 @@ package com.bible.bible_study_back.dto;
 
 import java.util.Date;
 
-public class QTDTO {
+public class QTDto {
     Integer id;
     String book;
     String chapter;
@@ -12,7 +12,7 @@ public class QTDTO {
     Date updateAt;
     Date date;
 
-    public QTDTO(Integer id, String book, String chapter, String verse, String content, Date createAt, Date updateAt, Date date) {
+    public QTDto(Integer id, String book, String chapter, String verse, String content, Date createAt, Date updateAt, Date date) {
         this.id = id;
         this.book = book;
         this.chapter = chapter;
