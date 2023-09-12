@@ -53,7 +53,8 @@ public class PBSController {
                 pbsDto.getUserId(),
                 pbsDto.getCreateAt(),
                 pbsDto.getUpdateAt(),
-                pbsDto.getDate()
+                pbsDto.getDate(),
+                pbsDto.getShowData()
         );
         pbsService.createPBS(pbs);
 

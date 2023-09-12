@@ -21,7 +21,7 @@
     <!--PBS 생성-->
     <insert id="createPBS">
         insert into
-        pbs(book, chapter, startVerse, endVerse, content, userName, userId, date)
+        pbs(book, chapter, startVerse, endVerse, content, userName, userId, date, showData)
         values
         (
             #{pbs.book},
@@ -31,7 +31,8 @@
             #{pbs.content},
             #{pbs.userName},
             #{pbs.userId},
-            #{pbs.date}
+            #{pbs.date},
+            #{pbs.showData}
         );
     </insert>
 

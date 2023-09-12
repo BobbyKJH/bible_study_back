@@ -15,8 +15,9 @@ public class PBSDto {
     Date createAt;
     Date updateAt;
     Date date;
+    String showData;
 
-    public PBSDto(Integer id, String book, Integer chapter, Integer startVerse, Integer endVerse, String content, String userName, String userId, Date createAt, Date updateAt, Date date) {
+    public PBSDto(Integer id, String book, Integer chapter, Integer startVerse, Integer endVerse, String content, String userName, String userId, Date createAt, Date updateAt, Date date, String showData) {
         this.id = id;
         this.book = book;
         this.chapter = chapter;
@@ -28,6 +29,7 @@ public class PBSDto {
         this.createAt = createAt;
         this.updateAt = updateAt;
         this.date = date;
+        this.showData = showData;
     }
 
     public Integer getId() {
@@ -116,5 +118,13 @@ public class PBSDto {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getShowData() {
+        return showData;
+    }
+
+    public void setShowData(String showData) {
+        this.showData = showData;
     }
 }
