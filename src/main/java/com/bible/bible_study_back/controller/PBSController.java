@@ -39,6 +39,7 @@ public class PBSController {
         return pbs;
     }
 
+    /** PBS 생성 */
     @PostMapping("/pbs")
     public String createPBS(@RequestBody PBSDto pbsDto){
         PBSDto pbs = new PBSDto(
@@ -57,6 +58,14 @@ public class PBSController {
         pbsService.createPBS(pbs);
 
         return "success";
+    }
+
+    /** 삭제 */
+    @DeleteMapping("/pbs/{id}")
+    public String deletePBS(@PathVariable("id") Integer id){
+        pbsService.deletePBS(id);
+
+        return "delete success";
     }
 
 }

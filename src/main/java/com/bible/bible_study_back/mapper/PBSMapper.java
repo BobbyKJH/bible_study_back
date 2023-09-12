@@ -19,4 +19,7 @@ public interface PBSMapper {
 
    /** 생성 */
    Integer createPBS(@Param("pbs") PBSDto pbs);
+
+   /** 삭제 */
+   Integer deletePBS(@Param("id") Integer id);
 }

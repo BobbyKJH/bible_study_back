@@ -5,12 +5,12 @@
 
     <!--모든 데이터-->
     <select id="findAllPBS" resultType="com.bible.bible_study_back.dto.PBSDto">
-        select * from pbs
+        select * from pbs;
     </select>
 
     <!--PBS 게시판-->
     <select id="findByPagePBS" resultType="com.bible.bible_study_back.dto.PBSDto">
-        select * from pbs order by id desc limit #{count} offset #{offset}
+        select * from pbs order by id desc limit #{count} offset #{offset};
     </select>
 
     <!--PBS 상세페이지-->
@@ -34,5 +34,10 @@
             #{pbs.date}
         );
     </insert>
+
+    <!--PBS 삭제-->
+    <delete id="deletePBS">
+        delete from pbs where id=#{id};
+    </delete>
 
 </mapper>
