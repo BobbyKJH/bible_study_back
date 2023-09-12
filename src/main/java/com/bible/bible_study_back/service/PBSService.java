@@ -23,4 +23,8 @@ public class PBSService {
     public List<PBSDto> getPBSByPage(Integer page, Integer size){
         return pbsMapper.findByPagePBS(size, (page - 1) * size);
     }
+    /** pbs 상세 페이지 */
+    public PBSDto getPBSByOne(Integer id){
+        return pbsMapper.findByOne(id);
+    }
 }

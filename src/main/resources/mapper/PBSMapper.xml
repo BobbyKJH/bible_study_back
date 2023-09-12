@@ -8,8 +8,14 @@
         select * from pbs
     </select>
 
+    <!--PBS 게시판-->
     <select id="findByPagePBS" resultType="com.bible.bible_study_back.dto.PBSDto">
         select * from pbs order by id desc limit #{count} offset #{offset}
+    </select>
+
+    <!--PBS 상세페이지-->
+    <select id="findByOne" resultType="com.bible.bible_study_back.dto.PBSDto">
+        select * from pbs where id = #{id}
     </select>
 
 </mapper>

@@ -13,4 +13,7 @@ public interface PBSMapper {
 
    /** 게시판 기능 */
    List<PBSDto> findByPagePBS(@Param("count") Integer count, @Param("offset") Integer offset);
+
+   /** 상세 페이지 */
+   PBSDto findByOne(@Param("id") Integer id);
 }

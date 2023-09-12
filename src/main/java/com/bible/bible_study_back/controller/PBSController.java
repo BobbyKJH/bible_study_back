@@ -31,4 +31,12 @@ public class PBSController {
         List<PBSDto> PBSList = pbsService.getPBSByPage(page, 10);
         return PBSList;
     }
+
+    /** PBS 상세 페이지 */
+    @GetMapping("/pbs/{id}")
+    public PBSDto getFindByOne(@PathVariable("id") Integer id){
+        PBSDto pbs = pbsService.getPBSByOne(id);
+        return pbs;
+    }
+
 }
