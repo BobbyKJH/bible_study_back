@@ -39,4 +39,24 @@ public class PBSController {
         return pbs;
     }
 
+    @PostMapping("/pbs")
+    public String createPBS(@RequestBody PBSDto pbsDto){
+        PBSDto pbs = new PBSDto(
+                pbsDto.getId(),
+                pbsDto.getBook(),
+                pbsDto.getChapter(),
+                pbsDto.getStartVerse(),
+                pbsDto.getEndVerse(),
+                pbsDto.getContent(),
+                pbsDto.getUserName(),
+                pbsDto.getUserId(),
+                pbsDto.getCreateAt(),
+                pbsDto.getUpdateAt(),
+                pbsDto.getDate()
+        );
+        pbsService.createPBS(pbs);
+
+        return "success";
+    }
+
 }

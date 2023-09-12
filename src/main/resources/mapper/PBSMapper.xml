@@ -15,7 +15,24 @@
 
     <!--PBS 상세페이지-->
     <select id="findByOne" resultType="com.bible.bible_study_back.dto.PBSDto">
-        select * from pbs where id = #{id}
+        select * from pbs where id = #{id};
     </select>
+
+    <!--PBS 생성-->
+    <insert id="createPBS">
+        insert into
+        pbs(book, chapter, startVerse, endVerse, content, userName, userId, date)
+        values
+        (
+            #{pbs.book},
+            #{pbs.chapter},
+            #{pbs.startVerse},
+            #{pbs.endVerse},
+            #{pbs.content},
+            #{pbs.userName},
+            #{pbs.userId},
+            #{pbs.date}
+        );
+    </insert>
 
 </mapper>
