@@ -2,43 +2,5 @@
 <!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="com.bible.bible_study_back.mapper.PBSMapper">
-    <!-- 모든 데이터 -->
-    <select id="findAll" resultType="com.bible.bible_study_back.dto.PBSDTO">
-        select * from pbs order by id desc
-    </select>
-    <!-- 커뮤니티 페이지 ( 10개 ) -->
-    <select id="findByNotice" resultType="com.bible.bible_study_back.dto.PBSDTO">
-        select * from pbs order by id desc limit #{page} offset #{offset}
-    </select>
-    <!-- 상세 페이지 -->
-    <select id="findPBS" resultType="com.bible.bible_study_back.dto.PBSDTO">
-        select * from pbs where id = #{id}
-    </select>
-    <!-- 월별 개수 -->
-<!--    <select id="findOne" resultType="com.bible.bible_study_back.dto.PostDTO">-->
-<!--        select * from post where id = #{id}-->
-<!--    </select>-->
-    <!-- PBS 생성 -->
-    <insert id="createPBS">
-        insert
-        into pbs(book, chapter, startVerse, endVerse, content, name, user, date)
-        values
-            (#{pbs.book}, #{pbs.chapter}, #{pbs.startVerse},#{pbs.endVerse} ,#{pbs.content}, #{pbs.name}, #{pbs.user}, #{pbs.date});
-    </insert>
-
-    <update id="updatePBS">
-        update pbs set
-                       book=#{pbs.book},
-                       chapter=#{pbs.chapter},
-                       verse=#{pbs.verse},
-                       content=#{pbs.content},
-                       name=#{pbs.name},
-                       date=#{pbs.date}
-        where id=#{pbs.id}
-    </update>
-
-    <delete id="deletePBS">
-        delete from pbs where id=#{id}
-    </delete>
 
 </mapper>
