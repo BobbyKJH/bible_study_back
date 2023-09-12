@@ -2,6 +2,7 @@ package com.bible.bible_study_back.controller;
 
 import com.bible.bible_study_back.dto.PBSDto;
 import com.bible.bible_study_back.service.PBSService;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +13,7 @@ import java.util.List;
 @CrossOrigin
 public class PBSController {
 
-    public PBSService pbsService;
+    private PBSService pbsService;
 
     public PBSController(PBSService pbsService) {
         this.pbsService = pbsService;
