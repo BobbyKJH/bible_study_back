@@ -21,6 +21,21 @@
     </select>
 
     <!--QT 생성-->
+    <insert id="createQT">
+        insert into qt(book, chapter, startVerse, endVerse, content, userName, userId, date, showData)
+        values
+            (
+            #{qt.book},
+            #{qt.chapter},
+            #{qt.startVerse},
+            #{qt.endVerse},
+            #{qt.content},
+            #{qt.userName},
+            #{qt.userId},
+            #{qt.date},
+            #{qt.showData}
+        );
+    </insert>
 
 
     <!--QT 수정-->

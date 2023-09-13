@@ -16,13 +16,13 @@ public class QTController {
         this.qtService = qtService;
     }
 
-    /** 모든 QT 데이터 */
+    /** 모든 QT 데이터 apt */
     @GetMapping("/qt/all")
     public List<QTDto> getAllQT(){
         return qtService.findAll();
     }
 
-    /** QT 게시판 */
+    /** QT 게시판 apt */
     @GetMapping("/qt")
     public List<QTDto> getFindByPageQT(@RequestParam("page") Integer page){
         List<QTDto> QTList = qtService.findByPageQT(page, 10);
@@ -30,11 +30,33 @@ public class QTController {
         return QTList;
     }
 
-    /** QT 상세페이지 */
+    /** QT 상세페이지 apt */
     @GetMapping("/qt/{id}")
     public QTDto getFindByOneQT(@PathVariable("id") Integer id){
         QTDto QTList = qtService.findByOneQt(id);
 
         return QTList;
+    }
+
+    /** QT 생성 api */
+    @PostMapping("/qt")
+    public String getCreateQT(@RequestBody QTDto qtDto){
+        QTDto qt = new QTDto(
+                qtDto.getId(),
+                qtDto.getBook(),
+                qtDto.getChapter(),
+                qtDto.getStartVerse(),
+                qtDto.getEndVerse(),
+                qtDto.getContent(),
+                qtDto.getUserName(),
+                qtDto.getUserId(),
+                qtDto.getCreateAt(),
+                qtDto.getUpdateAt(),
+                qtDto.getDate(),
+                qtDto.getShowData()
+        );
+        qtService.createQT(qt);
+
+        return "QT Create Success";
     }
 }

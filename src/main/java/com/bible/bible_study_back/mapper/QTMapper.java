@@ -18,4 +18,7 @@ public interface QTMapper {
     /** QT 상세페이지 */
     QTDto findByOneQT(@Param("id") Integer id);
 
+    /** QT 생성 */
+    Integer createQT(@Param("qt") QTDto qt);
+
 }

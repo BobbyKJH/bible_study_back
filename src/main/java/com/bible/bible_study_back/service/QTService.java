@@ -14,18 +14,25 @@ public class QTService {
         this.qtMapper = qtMapper;
     }
 
-    /** 모든 QT 정보 api */
+    /** 모든 QT 정보 */
     public List<QTDto> findAll(){
         return qtMapper.findAll();
     }
 
-    /** QT 게시판 api */
+    /** QT 게시판 */
     public List<QTDto> findByPageQT(Integer page, Integer size){
         return qtMapper.findByPageQT(size, (page - 1) * size);
     }
 
-    /** QT 상세페이지 api */
+    /** QT 상세페이지 */
     public QTDto findByOneQt(Integer id){
         return qtMapper.findByOneQT(id);
+    }
+
+    /** QT 생성 */
+    public boolean createQT(QTDto qt){
+        Integer result = qtMapper.createQT(qt);
+
+        return result == 1;
     }
 }
