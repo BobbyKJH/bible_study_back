@@ -4,6 +4,7 @@ import com.bible.bible_study_back.dto.QTDto;
 import com.bible.bible_study_back.service.QTService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -21,5 +22,11 @@ public class QTController {
     @GetMapping("/qt/all")
     public List<QTDto> getAllQT(){
         return qtService.findAll();
+    }
+
+    @GetMapping("/qt")
+    public List<QTDto> getFindByPageQT(@RequestParam("page") Integer page){
+        List<QTDto> QTList = qtService.findByPageQT(page, 10);
+        return QTList;
     }
 }

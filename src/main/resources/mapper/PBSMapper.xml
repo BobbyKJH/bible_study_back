@@ -38,6 +38,7 @@
         );
     </insert>
 
+    <!--PBS 수정-->
     <update id="updatePBS">
         update pbs set
                        book = #{pbs.book},

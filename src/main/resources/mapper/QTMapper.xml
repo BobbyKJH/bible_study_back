@@ -8,4 +8,23 @@
         select * from qt;
     </select>
 
+    <!--QT 게시판 생성-->
+    <select id="findByPageQT" resultType="com.bible.bible_study_back.dto.QTDto">
+        select * from qt
+        where showData = "Y"
+        order by id desc limit #{count} offset #{offset};
+    </select>
+
+    <!--QT 상세 페이지-->
+
+
+    <!--QT 생성-->
+
+
+    <!--QT 수정-->
+
+
+    <!--QT 삭제-->
+
+
 </mapper>

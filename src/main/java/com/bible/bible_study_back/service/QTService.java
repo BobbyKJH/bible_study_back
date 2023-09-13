@@ -17,4 +17,8 @@ public class QTService {
     public List<QTDto> findAll(){
         return qtMapper.findAll();
     }
+
+    public List<QTDto> findByPageQT(Integer page, Integer size){
+        return qtMapper.findByPageQT(size, (page - 1) * size);
+    }
 }
