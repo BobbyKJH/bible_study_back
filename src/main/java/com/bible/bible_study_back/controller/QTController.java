@@ -60,6 +60,7 @@ public class QTController {
         return "QT Create Success";
     }
 
+    /** QT 수정 api */
     @PutMapping("/qt")
     public String getUpdateQT(@RequestBody QTDto qtDto){
         QTDto qt = new QTDto(
@@ -79,5 +80,13 @@ public class QTController {
         qtService.updateQT(qt);
 
         return "QT Update Success";
+    }
+
+    /** QT 삭제 api */
+    @DeleteMapping("/qt/{id}")
+    public String getDeleteQT(@PathVariable("id") Integer id){
+        qtService.deleteQT(id);
+
+        return "QT Delete Success";
     }
 }

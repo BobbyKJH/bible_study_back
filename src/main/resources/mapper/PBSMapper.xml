@@ -41,13 +41,13 @@
     <!--PBS 수정-->
     <update id="updatePBS">
         update pbs set
-                       book = #{pbs.book},
-                       chapter = #{pbs.chapter},
-                       startVerse = #{pbs.startVerse},
-                       endVerse = #{pbs.endVerse},
-                       content = #{pbs.content},
-                       date = #{pbs.date},
-                       showData = #{pbs.showData}
+            book        = #{pbs.book},
+            chapter     = #{pbs.chapter},
+            startVerse  = #{pbs.startVerse},
+            endVerse    = #{pbs.endVerse},
+            content     = #{pbs.content},
+            date        = #{pbs.date},
+            showData    = #{pbs.showData}
         where id = #{pbs.id};
     </update>
 

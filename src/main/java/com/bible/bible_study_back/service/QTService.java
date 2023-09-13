@@ -42,4 +42,12 @@ public class QTService {
 
         return result == 1;
     }
+
+    /** QT 삭제 */
+    public boolean deleteQT(Integer id){
+        Integer result = qtMapper.deleteQT(id);
+        System.out.println("delete" + result);
+
+        return result == 1;
+    }
 }

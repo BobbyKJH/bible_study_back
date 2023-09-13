@@ -23,4 +23,8 @@ public interface QTMapper {
 
     /** QT 수정 */
     Integer updateQT(@Param("qt") QTDto qt);
+
+    /** QT 삭제 */
+    Integer deleteQT(@Param("id") Integer id);
+
 }
