@@ -21,4 +21,6 @@ public interface QTMapper {
     /** QT 생성 */
     Integer createQT(@Param("qt") QTDto qt);
 
+    /** QT 수정 */
+    Integer updateQT(@Param("qt") QTDto qt);
 }

@@ -59,4 +59,25 @@ public class QTController {
 
         return "QT Create Success";
     }
+
+    @PutMapping("/qt")
+    public String getUpdateQT(@RequestBody QTDto qtDto){
+        QTDto qt = new QTDto(
+                qtDto.getId(),
+                qtDto.getBook(),
+                qtDto.getChapter(),
+                qtDto.getStartVerse(),
+                qtDto.getEndVerse(),
+                qtDto.getContent(),
+                qtDto.getUserName(),
+                qtDto.getUserId(),
+                qtDto.getCreateAt(),
+                qtDto.getUpdateAt(),
+                qtDto.getDate(),
+                qtDto.getShowData()
+        );
+        qtService.updateQT(qt);
+
+        return "QT Update Success";
+    }
 }

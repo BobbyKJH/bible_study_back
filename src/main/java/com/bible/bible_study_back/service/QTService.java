@@ -35,4 +35,11 @@ public class QTService {
 
         return result == 1;
     }
+
+    /** QT 수정 */
+    public boolean updateQT(QTDto qt){
+        Integer result = qtMapper.updateQT(qt);
+
+        return result == 1;
+    }
 }

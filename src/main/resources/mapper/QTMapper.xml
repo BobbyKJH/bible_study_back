@@ -37,8 +37,18 @@
         );
     </insert>
 
-
     <!--QT 수정-->
+    <update id="updateQT">
+        update qt set
+            book = #{qt.book},
+            chapter = #{qt.chapter},
+            startVerse = #{qt.startVerse},
+            endVerse = #{qt.endVerse},
+            content = #{qt.content},
+            date = #{qt.date},
+            showData = #{qt.showData}
+        where id = #{qt.id};
+    </update>
 
 
     <!--QT 삭제-->
