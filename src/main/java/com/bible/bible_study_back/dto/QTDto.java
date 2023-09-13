@@ -1,26 +1,35 @@
 package com.bible.bible_study_back.dto;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class QTDto {
+
     Integer id;
     String book;
-    String chapter;
-    String verse;
+    Integer chapter;
+    Integer startVerse;
+    Integer endVerse;
     String content;
+    String userName;
+    String userId;
     Date createAt;
     Date updateAt;
     Date date;
+    String showData;
 
-    public QTDto(Integer id, String book, String chapter, String verse, String content, Date createAt, Date updateAt, Date date) {
+    public QTDto(Integer id, String book, Integer chapter, Integer startVerse, Integer endVerse, String content, String userName, String userId, Date createAt, Date updateAt, Date date, String showData) {
         this.id = id;
         this.book = book;
         this.chapter = chapter;
-        this.verse = verse;
+        this.startVerse = startVerse;
+        this.endVerse = endVerse;
         this.content = content;
+        this.userName = userName;
+        this.userId = userId;
         this.createAt = createAt;
         this.updateAt = updateAt;
         this.date = date;
+        this.showData = showData;
     }
 
     public Integer getId() {
@@ -39,20 +48,28 @@ public class QTDto {
         this.book = book;
     }
 
-    public String getChapter() {
+    public Integer getChapter() {
         return chapter;
     }
 
-    public void setChapter(String chapter) {
+    public void setChapter(Integer chapter) {
         this.chapter = chapter;
     }
 
-    public String getVerse() {
-        return verse;
+    public Integer getStartVerse() {
+        return startVerse;
     }
 
-    public void setVerse(String verse) {
-        this.verse = verse;
+    public void setStartVerse(Integer startVerse) {
+        this.startVerse = startVerse;
+    }
+
+    public Integer getEndVerse() {
+        return endVerse;
+    }
+
+    public void setEndVerse(Integer endVerse) {
+        this.endVerse = endVerse;
     }
 
     public String getContent() {
@@ -61,6 +78,22 @@ public class QTDto {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public Date getCreateAt() {
@@ -85,5 +118,13 @@ public class QTDto {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getShowData() {
+        return showData;
+    }
+
+    public void setShowData(String showData) {
+        this.showData = showData;
     }
 }

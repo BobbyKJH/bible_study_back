@@ -20,7 +20,7 @@ public interface PBSMapper {
    /** PBS 생성 */
    Integer createPBS(@Param("pbs") PBSDto pbs);
 
-   /** PBS 생성 */
+   /** PBS 수정  */
     Integer updatePBS(@Param("pbs") PBSDto pbs);
 
    /** PBS 삭제 */
