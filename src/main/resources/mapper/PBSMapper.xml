@@ -46,8 +46,6 @@
                        startVerse = #{pbs.startVerse},
                        endVerse = #{pbs.endVerse},
                        content = #{pbs.content},
-                       userName = #{pbs.userName},
-                       userId = #{pbs.userId},
                        date = #{pbs.date},
                        showData = #{pbs.showData}
         where id = #{pbs.id};
