@@ -3,10 +3,9 @@ package com.bible.bible_study_back.controller;
 import com.bible.bible_study_back.dto.PBSDto;
 import com.bible.bible_study_back.service.PBSService;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.*;
 
 @RestController
 @CrossOrigin
@@ -27,9 +26,15 @@ public class PBSController {
 
     /** 10개씩 PBS 정보 ( 최신순 ) */
     @GetMapping("/pbs")
-    public List<PBSDto> getFindByPage(@RequestParam("page") Integer page){
-        List<PBSDto> PBSList = pbsService.getPBSByPage(page, 10);
-        return PBSList;
+    public Map<String, Object> getFindByPage(@RequestParam("page") Integer page){
+        List<PBSDto> pbsNoticeList = pbsService.getPBSByPage(page, 10);
+        Integer pbsLength = pbsService.getPBSCount();
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("length", pbsLength);
+        map.put("pbs", pbsNoticeList);
+
+        return map;
     }
 
     /** PBS 상세 페이지 */

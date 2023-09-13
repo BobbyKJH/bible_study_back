@@ -20,6 +20,11 @@
         select * from pbs where id = #{id};
     </select>
 
+    <!--PBS 개수-->
+    <select id="findCountPBS" resultType="Integer">
+        select count(*) from pbs;
+    </select>
+
     <!--PBS 생성-->
     <insert id="createPBS">
         insert into

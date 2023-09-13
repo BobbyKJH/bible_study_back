@@ -19,13 +19,20 @@ public class PBSService {
     public List<PBSDto> getAllPBS(){
         return pbsMapper.findAllPBS();
     }
+
     /** 10개씩 PBS 정보 (최신순) */
     public List<PBSDto> getPBSByPage(Integer page, Integer size){
         return pbsMapper.findByPagePBS(size, (page - 1) * size);
     }
+
     /** PBS 상세 페이지 */
     public PBSDto getPBSByOne(Integer id){
         return pbsMapper.findByOne(id);
+    }
+
+    /** PBS 개수 */
+    public Integer getPBSCount(){
+        return pbsMapper.findCountPBS();
     }
     
     /** PBS 생성 */

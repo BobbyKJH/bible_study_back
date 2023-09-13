@@ -17,6 +17,9 @@ public interface PBSMapper {
    /** 상세 페이지 */
    PBSDto findByOne(@Param("id") Integer id);
 
+   /** PBS 개수 */
+   Integer findCountPBS();
+
    /** PBS 생성 */
    Integer createPBS(@Param("pbs") PBSDto pbs);
 
