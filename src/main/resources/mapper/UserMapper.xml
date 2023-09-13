@@ -3,6 +3,8 @@
 
 <mapper namespace="com.bible.bible_study_back.mapper.UserMapper">
 
-
+    <insert id="createUser">
+        insert into user_info(userName, userId) values (#{user.userName}, #{user.userId});
+    </insert>
 
 </mapper>
