@@ -14,6 +14,8 @@ public interface QTMapper {
 
     /** QT 게시판 */
     List<QTDto> findByPageQT(@Param("count") Integer count, @Param("offset") Integer offset);
-
+    
+    /** QT 상세페이지 */
+    QTDto findByOneQT(@Param("id") Integer id);
 
 }

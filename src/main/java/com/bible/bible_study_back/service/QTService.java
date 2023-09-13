@@ -14,11 +14,18 @@ public class QTService {
         this.qtMapper = qtMapper;
     }
 
+    /** 모든 QT 정보 api */
     public List<QTDto> findAll(){
         return qtMapper.findAll();
     }
 
+    /** QT 게시판 api */
     public List<QTDto> findByPageQT(Integer page, Integer size){
         return qtMapper.findByPageQT(size, (page - 1) * size);
+    }
+
+    /** QT 상세페이지 api */
+    public QTDto findByOneQt(Integer id){
+        return qtMapper.findByOneQT(id);
     }
 }

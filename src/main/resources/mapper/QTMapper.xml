@@ -16,7 +16,9 @@
     </select>
 
     <!--QT 상세 페이지-->
-
+    <select id="findByOneQT" resultType="com.bible.bible_study_back.dto.QTDto">
+        select * from qt where id = #{id};
+    </select>
 
     <!--QT 생성-->
 
