@@ -20,6 +20,11 @@
         select * from qt where id = #{id};
     </select>
 
+    <!--PBS 개수-->
+    <select id="findCountQT" resultType="Integer">
+        select count(*) from qt;
+    </select>
+
     <!--QT 생성-->
     <insert id="createQT">
         insert into qt(book, chapter, startVerse, endVerse, content, userName, userId, date, showData)

@@ -24,9 +24,14 @@ public class QTService {
         return qtMapper.findByPageQT(size, (page - 1) * size);
     }
 
-    /** QT 상세페이지 */
+    /** QT 상세 페이지 */
     public QTDto findByOneQt(Integer id){
         return qtMapper.findByOneQT(id);
+    }
+
+    /** QT 개수 */
+    public Integer findCountQT(){
+        return qtMapper.findCountQT();
     }
 
     /** QT 생성 */

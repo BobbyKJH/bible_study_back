@@ -15,8 +15,11 @@ public interface QTMapper {
     /** QT 게시판 */
     List<QTDto> findByPageQT(@Param("count") Integer count, @Param("offset") Integer offset);
     
-    /** QT 상세페이지 */
+    /** QT 상세 페이지 */
     QTDto findByOneQT(@Param("id") Integer id);
+
+    /** QT 개수 */
+    Integer findCountQT();
 
     /** QT 생성 */
     Integer createQT(@Param("qt") QTDto qt);

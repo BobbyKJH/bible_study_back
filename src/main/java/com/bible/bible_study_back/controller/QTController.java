@@ -4,7 +4,9 @@ import com.bible.bible_study_back.dto.QTDto;
 import com.bible.bible_study_back.service.QTService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -16,21 +18,26 @@ public class QTController {
         this.qtService = qtService;
     }
 
-    /** 모든 QT 데이터 apt */
+    /** 모든 QT 데이터 api */
     @GetMapping("/qt/all")
     public List<QTDto> getAllQT(){
         return qtService.findAll();
     }
 
-    /** QT 게시판 apt */
+    /** QT 게시판 api */
     @GetMapping("/qt")
-    public List<QTDto> getFindByPageQT(@RequestParam("page") Integer page){
-        List<QTDto> QTList = qtService.findByPageQT(page, 10);
+    public Map<String, Object> getFindByPageQT(@RequestParam("page") Integer page){
+        List<QTDto> qtList = qtService.findByPageQT(page, 10);
+        Integer qtLength = qtService.findCountQT();
 
-        return QTList;
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("length", qtLength);
+        map.put("qt", qtList);
+
+        return map;
     }
 
-    /** QT 상세페이지 apt */
+    /** QT 상세 페이지 api */
     @GetMapping("/qt/{id}")
     public QTDto getFindByOneQT(@PathVariable("id") Integer id){
         QTDto QTList = qtService.findByOneQt(id);
