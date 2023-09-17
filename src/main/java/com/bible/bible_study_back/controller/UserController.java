@@ -2,10 +2,9 @@ package com.bible.bible_study_back.controller;
 
 import com.bible.bible_study_back.dto.UserDto;
 import com.bible.bible_study_back.service.UserService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -15,6 +14,13 @@ public class UserController {
 
     public UserController(UserService userService) {
         this.userService = userService;
+    }
+
+    /** User 조회 api */
+    @GetMapping("/user/{userId}")
+    public UserDto getFindUser(@PathVariable("userId") String userId){
+        UserDto user = userService.getFindUser(userId);
+        return user;
     }
 
     /** User 생성 api */
