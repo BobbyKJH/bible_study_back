@@ -17,9 +17,9 @@ public class UserController {
     }
 
     /** User 조회 api */
-    @GetMapping("/user/{userId}")
-    public UserDto getFindUser(@PathVariable("userId") String userId){
-        UserDto user = userService.getFindUser(userId);
+    @PostMapping("/user/userId")
+    public UserDto getFindUser(@RequestBody UserDto userDto){
+        UserDto user = userService.getFindUser(userDto.getUserId());
         return user;
     }
 
