@@ -20,6 +20,9 @@ public class UserController {
     @PostMapping("/user/userId")
     public UserDto getFindUser(@RequestBody UserDto userDto){
         UserDto user = userService.getFindUser(userDto.getUserId());
+        if(user == null){
+            throw new RuntimeException();
+        }
         return user;
     }
 
