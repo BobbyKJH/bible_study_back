@@ -37,6 +37,13 @@ public class QTController {
         return map;
     }
 
+    /** QT MyPage */
+    @GetMapping("/mypage/qt")
+    public List<QTDto> getMyQt(@RequestParam("userId") String userId){
+        List<QTDto> MyQt = qtService.getMyQt(userId);
+        return MyQt;
+    }
+
     /** QT 상세 페이지 api */
     @GetMapping("/qt/{id}")
     public QTDto getFindByOneQT(@PathVariable("id") Integer id){

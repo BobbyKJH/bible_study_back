@@ -24,6 +24,11 @@ public class QTService {
         return qtMapper.findByPageQT(size, (page - 1) * size);
     }
 
+    /** QT MyPage */
+    public List<QTDto> getMyQt(String userId){
+        return qtMapper.getMyQt(userId);
+    }
+
     /** QT 상세 페이지 */
     public QTDto findByOneQt(Integer id){
         return qtMapper.findByOneQT(id);

@@ -15,6 +15,11 @@
         order by id desc limit #{count} offset #{offset};
     </select>
 
+    <!--QT My Page-->
+    <select id="getMyQt" resultType="com.bible.bible_study_back.dto.QTDto">
+        select * from qt where userId = #{userId};
+    </select>
+
     <!--QT 상세 페이지-->
     <select id="findByOneQT" resultType="com.bible.bible_study_back.dto.QTDto">
         select * from qt where id = #{id};
