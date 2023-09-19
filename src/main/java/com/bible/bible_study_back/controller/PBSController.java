@@ -37,6 +37,14 @@ public class PBSController {
         return map;
     }
 
+    /** My Pbs */
+    @GetMapping("/mypage/pbs")
+    public List<PBSDto> getMyPbs(@RequestParam("userId") String userId){
+        List<PBSDto> MyPbs = pbsService.getMyPbs(userId);
+
+        return MyPbs;
+    }
+
     /** PBS 상세 페이지 */
     @GetMapping("/pbs/{id}")
     public PBSDto getFindByOne(@PathVariable("id") Integer id){

@@ -25,6 +25,13 @@ public class PBSService {
         return pbsMapper.findByPagePBS(size, (page - 1) * size);
     }
 
+    /** PBS MyPage */
+    public List<PBSDto> getMyPbs(String userId){
+        List<PBSDto> MyPbs = pbsMapper.getMyPbs(userId);
+
+        return MyPbs;
+    }
+
     /** PBS 상세 페이지 */
     public PBSDto getPBSByOne(Integer id){
         return pbsMapper.findByOne(id);
@@ -52,6 +59,7 @@ public class PBSService {
     /** PBS 삭제 */
     public boolean deletePBS(Integer id){
         Integer result = pbsMapper.deletePBS(id);
+
         return result == 1;
     }
 }
