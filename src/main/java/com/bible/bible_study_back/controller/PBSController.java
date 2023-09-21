@@ -39,10 +39,16 @@ public class PBSController {
 
     /** My Pbs */
     @GetMapping("/mypage/pbs")
-    public List<PBSDto> getMyPbs(@RequestParam("userId") String userId){
-        List<PBSDto> MyPbs = pbsService.getMyPbs(userId);
+    public Map<String, Object> getMyPbs(@RequestParam("userId") String userId, @RequestParam("page") Integer page){
+        List<PBSDto> MyPbs = pbsService.getMyPbs(userId, page, 10);
+        Integer MyPbsCount = pbsService.getMyPbsCount(userId);
 
-        return MyPbs;
+        Map<String, Object> map = new HashMap<String, Object>();
+
+        map.put("myPbs", MyPbs);
+        map.put("length", MyPbsCount);
+
+        return map;
     }
 
     /** PBS 상세 페이지 */

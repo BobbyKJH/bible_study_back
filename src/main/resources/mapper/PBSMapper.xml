@@ -5,19 +5,27 @@
 
     <!--모든 데이터-->
     <select id="findAllPBS" resultType="com.bible.bible_study_back.dto.PBSDto">
-        select * from pbs;
+        select * from pbs order by id desc;
     </select>
 
     <!--PBS 게시판-->
     <select id="findByPagePBS" resultType="com.bible.bible_study_back.dto.PBSDto">
         select * from pbs
         where showData = "Y"
-        order by id desc limit #{count} offset #{offset} ;
+        order by id desc limit #{count} offset #{offset};
     </select>
 
     <!--PBS My Page-->
     <select id="getMyPbs" resultType="com.bible.bible_study_back.dto.PBSDto">
-        select * from pbs where userId = #{userId};
+        select * from pbs
+        where userId = #{userId}
+        order by id desc limit #{count} offset #{offset};
+    </select>
+
+    <!--PBS My Page Count-->
+    <select id="getMyPbsCount" resultType="Integer">
+        select count(*) from pbs
+        where userId = #{userId};
     </select>
 
     <!--PBS 상세 페이지-->
