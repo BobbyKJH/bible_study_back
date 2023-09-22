@@ -17,6 +17,9 @@ public interface QTMapper {
 
     /** QT MyPage */
     List<QTDto> getMyQt(@Param("userId") String userId);
+
+    /** QT MyPage Count */
+    Integer getMyQtCount(@Param("userId") String userId);
     
     /** QT 상세 페이지 */
     QTDto findByOneQT(@Param("id") Integer id);

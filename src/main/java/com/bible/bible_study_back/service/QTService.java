@@ -29,6 +29,11 @@ public class QTService {
         return qtMapper.getMyQt(userId);
     }
 
+    /** QT MyPage Count */
+    public Integer getMyQtCount(String userId){
+        return qtMapper.getMyQtCount(userId);
+    }
+
     /** QT 상세 페이지 */
     public QTDto findByOneQt(Integer id){
         return qtMapper.findByOneQT(id);

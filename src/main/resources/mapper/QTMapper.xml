@@ -20,6 +20,11 @@
         select * from qt where userId = #{userId};
     </select>
 
+    <!--QT My Page-->
+    <select id="getMyQtCount" resultType="Integer">
+        select count(*) from qt where userId = #{userId};
+    </select>
+
     <!--QT 상세 페이지-->
     <select id="findByOneQT" resultType="com.bible.bible_study_back.dto.QTDto">
         select * from qt where id = #{id};
