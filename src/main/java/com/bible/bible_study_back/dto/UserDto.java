@@ -1,5 +1,8 @@
 package com.bible.bible_study_back.dto;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class UserDto {
 
     Integer id;
