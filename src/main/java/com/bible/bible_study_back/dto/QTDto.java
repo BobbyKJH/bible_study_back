@@ -1,7 +1,10 @@
 package com.bible.bible_study_back.dto;
 
+import lombok.NoArgsConstructor;
+
 import java.sql.Date;
 
+@NoArgsConstructor
 public class QTDto {
 
     Integer id;
