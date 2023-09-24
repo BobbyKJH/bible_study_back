@@ -5,22 +5,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserDto {
 
-    Integer id;
+
     String userName;
     String userId;
 
-    public UserDto(Integer id, String userName, String userId) {
-        this.id = id;
+    public UserDto(String userName, String userId) {
         this.userName = userName;
         this.userId = userId;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getUserName() {
