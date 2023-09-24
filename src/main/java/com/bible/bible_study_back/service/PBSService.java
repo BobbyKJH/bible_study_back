@@ -69,4 +69,8 @@ public class PBSService {
 
         return result == 1;
     }
+
+    public Integer analyticsPBS() {
+        return pbsMapper.analyticsPBS();
+    }
 }

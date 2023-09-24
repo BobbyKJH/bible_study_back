@@ -34,4 +34,7 @@ public interface PBSMapper {
 
    /** PBS 삭제 */
    Integer deletePBS(@Param("id") Integer id);
+
+   /** PBS 주간 통계 */
+   Integer analyticsPBS();
 }

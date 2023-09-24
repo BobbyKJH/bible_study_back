@@ -110,4 +110,10 @@ public class PBSController {
         return "delete success";
     }
 
+    /** 모든 PBS 정보 */
+    @GetMapping("/pbs/an")
+    public Integer analyticsPBS() {
+        Integer pbsList = pbsService.analyticsPBS();
+        return pbsList;
+    }
 }
