@@ -30,7 +30,6 @@ public class UserController {
     @PostMapping("/user")
     public String getCreateUser(@RequestBody UserDto userDto){
         UserDto user = new UserDto(
-//                userDto.getId(),
                 userDto.getUserName(),
                 userDto.getUserId()
         );
