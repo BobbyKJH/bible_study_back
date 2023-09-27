@@ -31,7 +31,8 @@ public class UserController {
     public String getCreateUser(@RequestBody UserDto userDto){
         UserDto user = new UserDto(
                 userDto.getUserName(),
-                userDto.getUserId()
+                userDto.getUserId(),
+                userDto.getUserAuth()
         );
         userService.createUser(user);
 

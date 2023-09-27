@@ -15,9 +15,17 @@ public class AdminService {
         this.adminMapper = adminMapper;
     }
 
+    /** 모든 데이터 */
     public AdminDto findByPBS(){
         AdminDto result = adminMapper.findByPBS();
 
         return result;
+    }
+
+    /** 수정 */
+    public boolean editPBS(AdminDto adminDto) {
+        Integer result = adminMapper.editPBS(adminDto);
+
+        return result == 1;
     }
 }
