@@ -5,7 +5,19 @@
 
     <!--모든 데이터-->
     <select id="findByPBS" resultType="com.bible.bible_study_back.dto.AdminDto">
-        select * from adminPBS;
+        select * from admin;
     </select>
+
+    <!--수정-->
+    <update id="editPBS">
+        update admin set
+        book       = #{admin.book},
+        chapter    = #{admin.chapter},
+        startVerse = #{admin.startVerse},
+        endVerse   = #{admin.endVerse},
+        startDate  = #{admin.startDate},
+        endDate    = #{admin.endDate},
+        evangelize = #{admin.evangelize}
+    </update>
 
 </mapper>
