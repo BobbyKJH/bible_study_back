@@ -73,10 +73,5 @@
     <delete id="deletePBS">
         delete from pbs where id=#{id};
     </delete>
-    
-    <!-- PBS 주간 통계 -->
-    <select id="analyticsPBS" resultType="Integer">
-        SELECT DATE(`createAt`) AS `date`, count(`id`) FROM pbs GROUP BY `createAt`;
-    </select>
 
 </mapper>
