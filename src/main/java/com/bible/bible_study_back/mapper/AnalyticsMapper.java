@@ -1,13 +1,13 @@
 package com.bible.bible_study_back.mapper;
 
-import com.bible.bible_study_back.dto.AnalysisDto;
+import com.bible.bible_study_back.dto.AnalyticsDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 @Mapper
-public interface AnalysisMapper {
+public interface AnalyticsMapper {
 
-    List<AnalysisDto> analysisPBS();
+    List<AnalyticsDto> analyticsPBS();
 
 }

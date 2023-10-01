@@ -2,12 +2,12 @@ package com.bible.bible_study_back.dto;
 
 import java.sql.Date;
 
-public class AnalysisDto {
+public class AnalyticsDto {
 
     Date date;
     Integer chart;
 
-    public AnalysisDto(Date date, Integer chart) {
+    public AnalyticsDto(Date date, Integer chart) {
         this.date = date;
         this.chart = chart;
     }
