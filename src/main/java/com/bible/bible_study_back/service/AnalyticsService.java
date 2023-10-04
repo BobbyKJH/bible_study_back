@@ -15,8 +15,8 @@ public class AnalyticsService {
         this.analysisMapper = analysisMapper;
     }
 
-    public List<AnalyticsDto> analysisPBS() {
-        List<AnalyticsDto> result = analysisMapper.analyticsPBS();
+    public List<AnalyticsDto> analysisPBS(String startDate, String endDate) {
+        List<AnalyticsDto> result = analysisMapper.analyticsPBS(startDate, endDate);
 
         return result;
     }

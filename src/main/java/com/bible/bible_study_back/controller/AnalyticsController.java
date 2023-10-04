@@ -2,9 +2,7 @@ package com.bible.bible_study_back.controller;
 
 import com.bible.bible_study_back.dto.AnalyticsDto;
 import com.bible.bible_study_back.service.AnalyticsService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,9 +16,9 @@ public class AnalyticsController {
         this.analyticsService = analyticsService;
     }
 
-    @GetMapping("/analysis")
-    public List<AnalyticsDto> analysisPBS() {
-        List<AnalyticsDto> result = analyticsService.analysisPBS();
+    @GetMapping("/analytics/pbs")
+    public List<AnalyticsDto> analysisPBS(@RequestParam("startDate") String startDate, @RequestParam("endDate") String endDate) {
+        List<AnalyticsDto> result = analyticsService.analysisPBS(startDate, endDate);
 
         return result;
     }
