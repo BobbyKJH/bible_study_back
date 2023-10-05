@@ -11,4 +11,6 @@ public interface AnalyticsMapper {
 
     List<AnalyticsDto> analyticsPBS(@Param("startDate") String startDate, @Param("endDate") String endDate);
 
+    List<AnalyticsDto> analyticsQT(@Param("startDate") String startDate, @Param("endDate") String endDate);
+
 }

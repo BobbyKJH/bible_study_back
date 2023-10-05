@@ -38,4 +38,39 @@
         date_calendar.day asc;
     </select>
 
+    <!--PBS 날짜별 통계-->
+    <select id="analyticsQT" resultType="com.bible.bible_study_back.dto.AnalyticsDto">
+        SELECT
+        date_calendar.day AS date,
+        COALESCE(daily_counts.count, 0) AS chart
+        FROM
+        (
+        SELECT
+        #{startDate} + INTERVAL n DAY AS day
+        FROM (
+        SELECT n FROM (
+        SELECT 0 AS n UNION ALL SELECT 1 UNION ALL SELECT 2
+        UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5
+        UNION ALL SELECT 6
+        ) AS numbers
+        ) AS chartDay
+        WHERE #{startDate} + INTERVAL n DAY <![CDATA[<=]]> #{endDate}
+        ) AS date_calendar
+        LEFT JOIN (
+        SELECT
+        DATE(createAt) AS day,
+        COUNT(*) AS count
+        FROM
+        qt
+        WHERE
+        createAt BETWEEN #{startDate} AND #{endDate}
+        GROUP BY
+        day
+        ) AS daily_counts
+        ON
+        date_calendar.day = daily_counts.day
+        ORDER BY
+        date_calendar.day asc;
+    </select>
+
 </mapper>

@@ -22,4 +22,11 @@ public class AnalyticsController {
 
         return result;
     }
+
+    @GetMapping("/analytics/qt")
+    public List<AnalyticsDto> analysisQT(@RequestParam("startDate") String startDate, @RequestParam("endDate") String endDate) {
+        List<AnalyticsDto> result = analyticsService.analysisQT(startDate, endDate);
+
+        return result;
+    }
 }

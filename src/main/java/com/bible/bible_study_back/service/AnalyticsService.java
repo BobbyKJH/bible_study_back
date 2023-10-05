@@ -20,4 +20,10 @@ public class AnalyticsService {
 
         return result;
     }
+
+    public List<AnalyticsDto> analysisQT(String startDate, String endDate) {
+        List<AnalyticsDto> result = analysisMapper.analyticsQT(startDate, endDate);
+
+        return result;
+    }
 }
