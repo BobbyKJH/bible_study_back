@@ -61,7 +61,7 @@ public class QTService {
     /** QT 삭제 */
     public boolean deleteQT(Integer id){
         Integer result = qtMapper.deleteQT(id);
-        System.out.println("delete" + result);
+        System.out.println("qt delete" + result);
 
         return result == 1;
     }

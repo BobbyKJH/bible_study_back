@@ -5,12 +5,12 @@
 
     <!--User 조회-->
     <select id="getFindUser" resultType="com.bible.bible_study_back.dto.UserDto">
-        select * from user_info where userId = #{userId}
+        select * from user_info where userId = sha2(#{userId}, 256);
     </select>
 
     <!--User 생성-->
     <insert id="createUser">
-        insert into user_info(userName, userId) values (#{user.userName}, #{user.userId});
+        insert into user_info(userName, userId) values (#{user.userName}, sha2(#{user.userId}, 256));
     </insert>
 
 </mapper>
