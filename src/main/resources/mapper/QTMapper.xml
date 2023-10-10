@@ -5,7 +5,7 @@
 
     <!--모든 데이터-->
     <select id="findAll" resultType="com.bible.bible_study_back.dto.QTDto">
-        select * from qt;
+        select * from qt where showData="Y" order by id desc;
     </select>
 
     <!--QT 게시판 생성-->

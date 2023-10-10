@@ -5,7 +5,7 @@
 
     <!--모든 데이터-->
     <select id="findAllPBS" resultType="com.bible.bible_study_back.dto.PBSDto">
-        select * from pbs order by id desc;
+        select * from pbs where showData="Y" order by id desc;
     </select>
 
     <!--PBS 게시판-->
@@ -33,7 +33,7 @@
         select * from pbs where id = #{id};
     </select>
 
-    <!--PBS 개수-->
+    <!--PBS 게시판 개수-->
     <select id="findCountPBS" resultType="Integer">
         select count(*) from pbs;
     </select>
