@@ -15,9 +15,9 @@ public interface PBSMapper {
    List<PBSDto> findByPagePBS(@Param("count") Integer count, @Param("offset") Integer offset);
 
    /** My Page Pbs */
-   List<PBSDto> getMyPbs(@Param("userId") String userId, @Param("count") Integer count, @Param("offset") Integer offset);
+   List<PBSDto> getMyPbs(@Param("userId") String userId);
 
-   /** My Page Pbs */
+   /** My Page Pbs 개수 */
    Integer getMyPbsCount(@Param("userId") String userId);
 
    /** 상세 페이지 */

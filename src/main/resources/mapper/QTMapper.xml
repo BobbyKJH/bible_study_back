@@ -20,7 +20,7 @@
         select * from qt where userId = #{userId};
     </select>
 
-    <!--QT My Page-->
+    <!--QT My Page 개수 -->
     <select id="getMyQtCount" resultType="Integer">
         select count(*) from qt where userId = #{userId};
     </select>

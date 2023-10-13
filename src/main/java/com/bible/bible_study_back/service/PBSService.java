@@ -26,8 +26,8 @@ public class PBSService {
     }
 
     /** PBS MyPage */
-    public List<PBSDto> getMyPbs(String userId, Integer page, Integer size){
-        List<PBSDto> MyPbs = pbsMapper.getMyPbs(userId, size, (page - 1) * size);
+    public List<PBSDto> getMyPbs(String userId){
+        List<PBSDto> MyPbs = pbsMapper.getMyPbs(userId);
 
         return MyPbs;
     }

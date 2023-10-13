@@ -18,8 +18,7 @@
     <!--PBS My Page-->
     <select id="getMyPbs" resultType="com.bible.bible_study_back.dto.PBSDto">
         select * from pbs
-        where userId = #{userId}
-        order by id desc limit #{count} offset #{offset};
+        where userId = #{userId};
     </select>
 
     <!--PBS My Page Count-->
