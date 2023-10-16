@@ -11,7 +11,7 @@ public class UserService {
 
     private UserMapper userMapper;
 
-    public UserService(UserMapper userMapper) {
+    public UserService(UserMapper userMapper){
         this.userMapper = userMapper;
     }
 
@@ -25,5 +25,12 @@ public class UserService {
         Integer result = userMapper.createUser(user);
 
         return result == 1;
+    }
+
+    /** UserId 개수 */
+    public Integer getUserCount(){
+        Integer UserCount = userMapper.getUserCount();
+
+        return UserCount;
     }
 }
