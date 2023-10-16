@@ -4,7 +4,8 @@ import com.bible.bible_study_back.dto.UserDto;
 import com.bible.bible_study_back.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -38,4 +39,17 @@ public class UserController {
 
         return "User Create Success";
     }
+
+    /** UserId 개수 */
+    @GetMapping("/user/count")
+    public Map<String, Object> getCountUser(){
+        Integer UserCount = userService.getUserCount();
+
+        Map<String, Object> userCount = new HashMap<String, Object>();
+
+        userCount.put("userIdCount", UserCount);
+
+        return userCount;
+    }
+
 }

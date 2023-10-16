@@ -14,4 +14,6 @@ public interface UserMapper {
 
     /** User 생성 */
     Integer createUser(@Param("user") UserDto user);
+
+    Integer getUserCount();
 }

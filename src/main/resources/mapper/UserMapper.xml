@@ -13,4 +13,9 @@
         insert into user_info(userName, userId) values (#{user.userName}, sha2(#{user.userId}, 256));
     </insert>
 
+    <!--UserId 개수-->
+    <select id="getUserCount" resultType="Integer">
+        select count(*) from user_info;
+    </select>
+
 </mapper>
