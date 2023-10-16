@@ -26,7 +26,7 @@ public class QTController {
 
     /** QT 게시판 api */
     @GetMapping("/qt")
-    public Map<String, Object> getFindByPageQT(@RequestParam("page") Integer page){
+    public List<QTDto> getFindByPageQT(@RequestParam("page") Integer page){
         List<QTDto> qtList = qtService.findByPageQT(page, 10);
         Integer qtLength = qtService.findCountQT();
 
@@ -34,12 +34,12 @@ public class QTController {
         map.put("length", qtLength);
         map.put("qt", qtList);
 
-        return map;
+        return qtList;
     }
 
     /** QT MyPage */
     @GetMapping("/mypage/qt")
-    public Map<String, Object> getMyQt(@RequestParam("userId") String userId){
+    public List<QTDto> getMyQt(@RequestParam("userId") String userId){
         List<QTDto> MyQt = qtService.getMyQt(userId);
         Integer MyQtCount = qtService.getMyQtCount(userId);
 
@@ -48,7 +48,7 @@ public class QTController {
         map.put("myQt", MyQt);
         map.put("length",MyQtCount);
 
-        return map;
+        return MyQt;
     }
 
     /** QT 상세 페이지 api */
