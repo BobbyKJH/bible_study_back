@@ -5,13 +5,18 @@
 
     <!--User 조회-->
     <select id="getFindUser" resultType="com.bible.bible_study_back.dto.UserDto">
-        select * from user_info where userId = sha2(#{userId}, 256);
+        select * from user_info where userId = #{userId};
     </select>
 
     <!--User 생성-->
     <insert id="createUser">
-        insert into user_info(userName, userId) values (#{user.userName}, sha2(#{user.userId}, 256));
+        insert into user_info(userName, userId, userBirth) values (#{user.userName}, #{user.userId}, #{user.userBirth});
     </insert>
+
+    <!--User 찾기-->
+    <select id="findUser" resultType="com.bible.bible_study_back.dto.UserDto">
+        select * from user_info where userName = #{userName} and userBirth = #{userBirth};
+    </select>
 
     <!--UserId 개수-->
     <select id="getUserCount" resultType="Integer">

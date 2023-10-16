@@ -15,5 +15,9 @@ public interface UserMapper {
     /** User 생성 */
     Integer createUser(@Param("user") UserDto user);
 
+    /** User 찾기 */
+    UserDto findUser(@Param("userName") String userName, @Param("userBirth") String userBirth);
+
+    /** User 개수 */
     Integer getUserCount();
 }

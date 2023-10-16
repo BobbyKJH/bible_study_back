@@ -9,11 +9,13 @@ public class UserDto {
     String userName;
     String userId;
     String userAuth;
+    String userBirth;
 
-    public UserDto(String userName, String userId, String userAuth) {
+    public UserDto(String userName, String userId, String userAuth, String userBirth) {
         this.userName = userName;
         this.userId = userId;
         this.userAuth = userAuth;
+        this.userBirth = userBirth;
     }
 
     public String getUserName() {
@@ -38,5 +40,13 @@ public class UserDto {
 
     public void setUserAuth(String userAuth) {
         this.userAuth = userAuth;
+    }
+
+    public String getUserBirth() {
+        return userBirth;
+    }
+
+    public void setUserBirth(String userBirth) {
+        this.userBirth = userBirth;
     }
 }

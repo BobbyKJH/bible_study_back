@@ -24,6 +24,18 @@ public class UserController {
         if(user == null){
             throw new RuntimeException();
         }
+
+        return user;
+    }
+
+    /** User 찾기 Api */
+    @PostMapping("/user/findUser")
+    public UserDto findUser(@RequestBody UserDto userDto){
+        UserDto user = userService.findUser(userDto.getUserName(), userDto.getUserBirth());
+        if(user == null){
+            throw new RuntimeException();
+        }
+
         return user;
     }
 
@@ -33,7 +45,8 @@ public class UserController {
         UserDto user = new UserDto(
                 userDto.getUserName(),
                 userDto.getUserId(),
-                userDto.getUserAuth()
+                userDto.getUserAuth(),
+                userDto.getUserBirth()
         );
         userService.createUser(user);
 

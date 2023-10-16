@@ -20,6 +20,11 @@ public class UserService {
         return userMapper.getFindUser(userId);
     }
 
+    /** User 찾기 */
+    public UserDto findUser(String userName, String userBirth){
+        return userMapper.findUser(userName, userBirth);
+    }
+
     /** User 생성 */
     public boolean createUser(UserDto user){
         Integer result = userMapper.createUser(user);
