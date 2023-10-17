@@ -37,7 +37,7 @@
 
     <!--QT 생성-->
     <insert id="createQT">
-        insert into qt(book, chapter, startVerse, endVerse, content, userName, userId, date, showData)
+        insert into qt(book, chapter, startVerse, endVerse, content, userName, userId, showData)
         values
             (
             #{qt.book},
@@ -47,7 +47,6 @@
             #{qt.content},
             #{qt.userName},
             #{qt.userId},
-            #{qt.date},
             #{qt.showData}
         );
     </insert>
@@ -60,7 +59,6 @@
             startVerse = #{qt.startVerse},
             endVerse   = #{qt.endVerse},
             content    = #{qt.content},
-            date       = #{qt.date},
             showData   = #{qt.showData}
         where id = #{qt.id};
     </update>

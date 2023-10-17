@@ -72,8 +72,6 @@ public class QTController {
                 qtDto.getUserName(),
                 qtDto.getUserId(),
                 qtDto.getCreateAt(),
-                qtDto.getUpdateAt(),
-                qtDto.getDate(),
                 qtDto.getShowData()
         );
         qtService.createQT(qt);
@@ -94,8 +92,6 @@ public class QTController {
                 qtDto.getUserName(),
                 qtDto.getUserId(),
                 qtDto.getCreateAt(),
-                qtDto.getUpdateAt(),
-                qtDto.getDate(),
                 qtDto.getShowData()
         );
         qtService.updateQT(qt);

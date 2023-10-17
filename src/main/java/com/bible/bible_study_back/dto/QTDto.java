@@ -16,11 +16,9 @@ public class QTDto {
     String userName;
     String userId;
     Date createAt;
-    Date updateAt;
-    Date date;
     String showData;
 
-    public QTDto(Integer id, String book, Integer chapter, Integer startVerse, Integer endVerse, String content, String userName, String userId, Date createAt, Date updateAt, Date date, String showData) {
+    public QTDto(Integer id, String book, Integer chapter, Integer startVerse, Integer endVerse, String content, String userName, String userId, Date createAt, String showData) {
         this.id = id;
         this.book = book;
         this.chapter = chapter;
@@ -30,8 +28,6 @@ public class QTDto {
         this.userName = userName;
         this.userId = userId;
         this.createAt = createAt;
-        this.updateAt = updateAt;
-        this.date = date;
         this.showData = showData;
     }
 
@@ -105,22 +101,6 @@ public class QTDto {
 
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
-    }
-
-    public Date getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public String getShowData() {
