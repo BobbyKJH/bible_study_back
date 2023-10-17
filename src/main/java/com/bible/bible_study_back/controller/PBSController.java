@@ -71,8 +71,6 @@ public class PBSController {
                 pbsDto.getUserName(),
                 pbsDto.getUserId(),
                 pbsDto.getCreateAt(),
-                pbsDto.getUpdateAt(),
-                pbsDto.getDate(),
                 pbsDto.getShowData()
         );
         pbsService.createPBS(pbs);
@@ -93,8 +91,6 @@ public class PBSController {
                 pbs.getUserName(),
                 pbs.getUserId(),
                 pbs.getCreateAt(),
-                pbs.getUpdateAt(),
-                pbs.getDate(),
                 pbs.getShowData()
         );
         pbsService.updatePBS(pbsDto);
