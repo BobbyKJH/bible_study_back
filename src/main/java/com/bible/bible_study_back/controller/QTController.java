@@ -26,29 +26,29 @@ public class QTController {
 
     /** QT 게시판 api */
     @GetMapping("/qt")
-    public List<QTDto> getFindByPageQT(@RequestParam("page") Integer page){
-        List<QTDto> qtList = qtService.findByPageQT(page, 10);
-        Integer qtLength = qtService.findCountQT();
+    public Map<String, Object> getFindByPageQT(@RequestParam("page") Integer page, @RequestParam("book") String book){
+        List<QTDto> qtList = qtService.findByPageQT(page, 10, book);
+        Integer qtLength = qtService.findCountQT(book);
 
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("length", qtLength);
         map.put("qt", qtList);
+        map.put("length", qtLength);
 
-        return qtList;
+        return map;
     }
 
     /** QT MyPage */
     @GetMapping("/mypage/qt")
-    public List<QTDto> getMyQt(@RequestParam("userId") String userId){
-        List<QTDto> MyQt = qtService.getMyQt(userId);
-        Integer MyQtCount = qtService.getMyQtCount(userId);
+    public Map<String, Object> getMyQt(@RequestParam("userId") String userId, @RequestParam("page") Integer page, @RequestParam("book") String book){
+        List<QTDto> MyQt = qtService.getMyQt(userId, page, 10, book);
+        Integer MyQtCount = qtService.getMyQtCount(userId, book);
 
         Map<String, Object> map = new HashMap<String, Object>();
 
-        map.put("myQt", MyQt);
+        map.put("qt", MyQt);
         map.put("length",MyQtCount);
 
-        return MyQt;
+        return map;
     }
 
     /** QT 상세 페이지 api */

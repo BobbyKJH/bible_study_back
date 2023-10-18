@@ -20,18 +20,18 @@ public class QTService {
     }
 
     /** QT 게시판 */
-    public List<QTDto> findByPageQT(Integer page, Integer size){
-        return qtMapper.findByPageQT(size, (page - 1) * size);
+    public List<QTDto> findByPageQT(Integer page, Integer size, String book){
+        return qtMapper.findByPageQT(size, (page - 1) * size, book);
     }
 
     /** QT MyPage */
-    public List<QTDto> getMyQt(String userId){
-        return qtMapper.getMyQt(userId);
+    public List<QTDto> getMyQt(String userId, Integer page, Integer size, String book){
+        return qtMapper.getMyQt(userId, size, (page - 1) * size, book);
     }
 
     /** QT MyPage Count */
-    public Integer getMyQtCount(String userId){
-        return qtMapper.getMyQtCount(userId);
+    public Integer getMyQtCount(String userId, String book){
+        return qtMapper.getMyQtCount(userId, book);
     }
 
     /** QT 상세 페이지 */
@@ -40,8 +40,8 @@ public class QTService {
     }
 
     /** QT 개수 */
-    public Integer findCountQT(){
-        return qtMapper.findCountQT();
+    public Integer findCountQT(String book){
+        return qtMapper.findCountQT(book);
     }
 
     /** QT 생성 */
