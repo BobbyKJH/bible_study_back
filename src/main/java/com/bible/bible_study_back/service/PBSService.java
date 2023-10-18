@@ -21,20 +21,20 @@ public class PBSService {
     }
 
     /** 10개씩 PBS 정보 (최신순) */
-    public List<PBSDto> getPBSByPage(Integer page, Integer size){
-        return pbsMapper.findByPagePBS(size, (page - 1) * size);
+    public List<PBSDto> getPBSByPage(Integer page, Integer size, String book){
+        return pbsMapper.findByPagePBS(size, (page - 1) * size, book);
     }
 
     /** PBS MyPage */
-    public List<PBSDto> getMyPbs(String userId){
-        List<PBSDto> MyPbs = pbsMapper.getMyPbs(userId);
+    public List<PBSDto> getMyPbs(String userId, Integer page, Integer size, String book){
+        List<PBSDto> MyPbs = pbsMapper.getMyPbs(userId, size, (page - 1) * size, book);
 
         return MyPbs;
     }
 
     /** PBS MyPage Count */
-    public Integer getMyPbsCount(String userId){
-        Integer MyPbs = pbsMapper.getMyPbsCount(userId);
+    public Integer getMyPbsCount(String userId, String book){
+        Integer MyPbs = pbsMapper.getMyPbsCount(userId, book);
 
         return MyPbs;
     }
@@ -45,8 +45,8 @@ public class PBSService {
     }
 
     /** PBS 개수 */
-    public Integer getPBSCount(){
-        return pbsMapper.findCountPBS();
+    public Integer getPBSCount(String book){
+        return pbsMapper.findCountPBS(book);
     }
     
     /** PBS 생성 */

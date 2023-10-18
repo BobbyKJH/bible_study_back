@@ -26,29 +26,29 @@ public class PBSController {
 
     /** 10개씩 PBS 정보 ( 최신순 ) */
     @GetMapping("/pbs")
-    public Map<String, Object> getFindByPage(@RequestParam("page") Integer page){
-        List<PBSDto> pbsNoticeList = pbsService.getPBSByPage(page, 10);
-        Integer pbsLength = pbsService.getPBSCount();
+    public Map<String, Object> getFindByPage(@RequestParam("page") Integer page, @RequestParam("book") String book){
+        List<PBSDto> pbsNoticeList = pbsService.getPBSByPage(page, 10, book);
+        Integer pbsLength = pbsService.getPBSCount(book);
 
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("length", pbsLength);
         map.put("pbs", pbsNoticeList);
+        map.put("length", pbsLength);
 
         return map;
     }
 
     /** My Pbs */
     @GetMapping("/mypage/pbs")
-    public List<PBSDto> getMyPbs(@RequestParam("userId") String userId, @RequestParam("page") Integer page){
-        List<PBSDto> MyPbs = pbsService.getMyPbs(userId);
-        Integer MyPbsCount = pbsService.getMyPbsCount(userId);
+    public Map<String, Object> getMyPbs(@RequestParam("userId") String userId, @RequestParam("page") Integer page, @RequestParam("book") String book){
+        List<PBSDto> MyPbs = pbsService.getMyPbs(userId, page, 10, book);
+        Integer MyPbsCount = pbsService.getMyPbsCount(userId, book);
 
         Map<String, Object> map = new HashMap<String, Object>();
 
-        map.put("myPbs", MyPbs);
+        map.put("pbs", MyPbs);
         map.put("length", MyPbsCount);
 
-        return MyPbs;
+        return map;
     }
 
     /** PBS 상세 페이지 */

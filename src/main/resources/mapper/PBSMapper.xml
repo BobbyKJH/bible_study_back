@@ -12,29 +12,43 @@
     <select id="findByPagePBS" resultType="com.bible.bible_study_back.dto.PBSDto">
         select * from pbs
         where showData = "Y"
+        <if test='bible != ""'>
+            and book = #{bible}
+        </if>
         order by id desc limit #{count} offset #{offset};
+    </select>
+
+    <!--PBS 게시판 개수-->
+    <select id="findCountPBS" resultType="Integer">
+        select count(*) from pbs
+        where showData = "Y"
+        <if test='bible != ""'>
+            and book = #{bible}
+        </if>
     </select>
 
     <!--PBS My Page-->
     <select id="getMyPbs" resultType="com.bible.bible_study_back.dto.PBSDto">
         select * from pbs
-        where userId = #{userId};
+        where userId = #{userId}
+        <if test='bible != ""'>
+            and book = #{bible}
+        </if>
+        order by id desc limit #{count} offset #{offset};
     </select>
 
     <!--PBS My Page Count-->
     <select id="getMyPbsCount" resultType="Integer">
         select count(*) from pbs
-        where userId = #{userId};
+        where userId = #{userId}
+        <if test='bible != ""'>
+            and book = #{bible}
+        </if>;
     </select>
 
     <!--PBS 상세 페이지-->
     <select id="findByOne" resultType="com.bible.bible_study_back.dto.PBSDto">
         select * from pbs where id = #{id};
-    </select>
-
-    <!--PBS 게시판 개수-->
-    <select id="findCountPBS" resultType="Integer">
-        select count(*) from pbs;
     </select>
 
     <!--PBS 생성-->

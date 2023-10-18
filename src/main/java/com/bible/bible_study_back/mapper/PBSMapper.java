@@ -12,19 +12,19 @@ public interface PBSMapper {
     List<PBSDto> findAllPBS();
 
    /** 게시판 기능 */
-   List<PBSDto> findByPagePBS(@Param("count") Integer count, @Param("offset") Integer offset);
+   List<PBSDto> findByPagePBS(@Param("count") Integer count, @Param("offset") Integer offset, @Param("bible") String book);
+
+   /** PBS 개수 */
+   Integer findCountPBS(@Param("bible") String book);
 
    /** My Page Pbs */
-   List<PBSDto> getMyPbs(@Param("userId") String userId);
+   List<PBSDto> getMyPbs(@Param("userId") String userId, @Param("count") Integer count, @Param("offset") Integer offset, @Param("bible") String book);
 
    /** My Page Pbs 개수 */
-   Integer getMyPbsCount(@Param("userId") String userId);
+   Integer getMyPbsCount(@Param("userId") String userId, @Param("bible") String book);
 
    /** 상세 페이지 */
    PBSDto findByOne(@Param("id") Integer id);
-
-   /** PBS 개수 */
-   Integer findCountPBS();
 
    /** PBS 생성 */
    Integer createPBS(@Param("pbs") PBSDto pbs);
