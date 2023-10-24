@@ -30,7 +30,7 @@
     <!--QT My Page-->
     <select id="getMyQt" resultType="com.bible.bible_study_back.dto.QTDto">
         select * from qt
-        where userId = #{userId}
+        where sha2(userId, 256) = #{userId}
         <if test='bible != ""'>
             and book = #{bible}
         </if>
@@ -40,7 +40,7 @@
     <!--QT My Page 개수 -->
     <select id="getMyQtCount" resultType="Integer">
         select count(*) from qt
-        where userId = #{userId}
+        where sha2(userId, 256) = #{userId}
         <if test='bible != ""'>
             and book = #{bible}
         </if>;
