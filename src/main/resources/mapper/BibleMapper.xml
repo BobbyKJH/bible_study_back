@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.bible.bible_study_back.mapper.BibleMapper">
+
+    <select id="findByBook" resultType="Integer">
+        select count(*) from bible where book = #{book};
+    </select>
+
+    <select id="findByChapter" resultType="Integer">
+        select (endVerse) from bible where book = #{book} and chapter = #{chapter};
+    </select>
+
+</mapper>
