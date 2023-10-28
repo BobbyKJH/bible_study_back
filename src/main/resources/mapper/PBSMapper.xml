@@ -30,7 +30,7 @@
     <!--PBS My Page-->
     <select id="getMyPbs" resultType="com.bible.bible_study_back.dto.PBSDto">
         select * from pbs
-        where sha2(userId, 256) = #{userId}
+        where userId = #{userId}
         <if test='bible != ""'>
             and book = #{bible}
         </if>
@@ -40,7 +40,7 @@
     <!--PBS My Page Count-->
     <select id="getMyPbsCount" resultType="Integer">
         select count(*) from pbs
-        where sha2(userId, 256) = #{userId}
+        where userId = #{userId}
         <if test='bible != ""'>
             and book = #{bible}
         </if>;
