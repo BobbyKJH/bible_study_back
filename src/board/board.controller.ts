@@ -1,6 +1,6 @@
 import { Controller } from "@nestjs/common";
 /** Service */
-import { BoardsService } from "./boards.service";
+import { BoardsService } from "./board.service";
 
 @Controller("boards")
 export class BoardsController {

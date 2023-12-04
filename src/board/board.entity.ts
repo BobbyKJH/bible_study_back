@@ -1,6 +1,6 @@
 import { BaseEntity, Column, PrimaryGeneratedColumn } from "typeorm";
 /** Type */
-import { BoardStatus } from "./boards.model";
+import { BoardStatus } from "./board.model";
 
 export class Board extends BaseEntity {
   @PrimaryGeneratedColumn()
