@@ -6,8 +6,11 @@ import {
   Param,
   Delete,
   Put,
+  Query,
 } from "@nestjs/common";
+/** Service */
 import { PbsService } from "./pbs.service";
+/** Dto */
 import { CreatePbsDto } from "./dto/create-pbs.dto";
 import { UpdatePbsDto } from "./dto/update-pbs.dto";
 
@@ -17,26 +20,26 @@ export class PbsController {
 
   @Post()
   create(@Body() createPbsDto: CreatePbsDto) {
-    return this.pbsService.create(createPbsDto);
+    return this.pbsService.pbsCreate(createPbsDto);
   }
 
   @Get()
-  findAll() {
-    return this.pbsService.findAll();
+  findAll(@Query("page") page: number, @Query("book") book: string) {
+    return this.pbsService.pbsFindAll(book);
   }
 
   @Get(":id")
   findOne(@Param("id") id: string) {
-    return this.pbsService.findOne(+id);
+    return this.pbsService.pbsFindOne(+id);
   }
 
   @Put(":id")
   update(@Param("id") id: string, @Body() updatePbsDto: UpdatePbsDto) {
-    return this.pbsService.update(+id, updatePbsDto);
+    return this.pbsService.pbsUpdate(+id, updatePbsDto);
   }
 
   @Delete(":id")
   remove(@Param("id") id: string) {
-    return this.pbsService.remove(+id);
+    return this.pbsService.pbsRemove(+id);
   }
 }
