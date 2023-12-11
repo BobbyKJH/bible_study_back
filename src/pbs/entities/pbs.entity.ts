@@ -1,14 +1,6 @@
-import {
-  Column,
-  Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from "typeorm";
-
-enum ShowData {
-  PUBLIC = "Y",
-  PRIMARY = "N",
-}
+import { Column, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+/** Enum */
+import { ShowData } from "../const/pbs.const";
 
 @Entity()
 export class Pbs {
