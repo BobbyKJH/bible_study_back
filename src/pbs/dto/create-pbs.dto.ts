@@ -1,7 +1,4 @@
-enum ShowData {
-  PRIMARY = "N",
-  PUBLIC = "Y",
-}
+import { ShowData } from "../const/pbs.const";
 
 export class CreatePbsDto {
   book: string;
