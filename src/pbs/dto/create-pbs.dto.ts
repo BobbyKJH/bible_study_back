@@ -4,8 +4,6 @@ enum ShowData {
 }
 
 export class CreatePbsDto {
-  id: number;
-
   book: string;
 
   chapter: number;
@@ -18,5 +16,7 @@ export class CreatePbsDto {
 
   showData: ShowData;
 
-  view: 0;
+  userId: string;
+
+  userName: string;
 }
