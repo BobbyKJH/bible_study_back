@@ -20,16 +20,9 @@ export class PbsService {
     private readonly pbsRepository: Repository<Pbs>,
   ) {}
 
-  /** Pbs 생성 */
-  pbsCreate(createPbsDto: CreatePbsDto) {
-    return "This action adds a new pb";
-  }
-
   /** Pbs 게시판 리스트 */
-  async pbsFindAll(page: number, book: string) {
+  async pbsFindAllNotice(page: number, book: string) {
     const findAll = await this.pbsRepository.find({
-      /** 가져올 데이터 결정 */
-      select: {},
       /** Data 오름차순 */
       order: {
         id: "DESC",
@@ -44,17 +37,16 @@ export class PbsService {
     const count = await this.pbsRepository.count({
       where: {
         showData: ShowData.PUBLIC,
+        book: Like(`%${book}%`),
       },
     });
 
-    return findAll;
+    return { pbs: findAll, length: count };
   }
 
   /** MyPage Pbs 리스트 */
-  async myPbsFindAll(page: number, book: string, userId: string) {
+  async myPbsFindAllNotice(page: number, book: string, userId: string) {
     const findAll = await this.pbsRepository.find({
-      /** 가져올 데이터 결정 */
-      select: {},
       /** Data 오름차순 */
       order: {
         id: "DESC",
@@ -72,29 +64,7 @@ export class PbsService {
       },
     });
 
-    return findAll;
-  }
-
-  /** Pbs 게시판 개수 */
-  async pbsNoticeCount() {
-    const count = await this.pbsRepository.count({
-      where: {
-        showData: ShowData.PUBLIC,
-      },
-    });
-
-    return count;
-  }
-
-  /** My Page Pbs Count */
-  async MyPagePbsNoticeCount(userId: string) {
-    const count = await this.pbsRepository.count({
-      where: {
-        userId: userId,
-      },
-    });
-
-    return count;
+    return { pbs: findAll, length: count };
   }
 
   /** Pbs 상세 페이지 */
@@ -118,13 +88,50 @@ export class PbsService {
     return found;
   }
 
+  /** Pbs 생성 */
+  pbsCreate(createPbsDto: CreatePbsDto) {
+    const createPbs = this.pbsRepository.create({ ...createPbsDto, view: 0 });
+
+    const savePbs = this.pbsRepository.save(createPbs);
+
+    return savePbs;
+  }
+
   /** Pbs 업데이트 */
-  pbsUpdate(id: number, updatePbsDto: UpdatePbsDto) {
-    return `This action updates a #${id} pb`;
+  async pbsUpdate(id: number, updatePbsDto: UpdatePbsDto) {
+    const foundPbs = this.pbsRepository.findOne({
+      where: { id: id } 
+    })
+
+    if (!foundPbs) {
+      throw new NotFoundException(`${id}는 없습니다.`);
+    }
+
+    const newPbs = {
+      id: id,
+      ...foundPbs,
+      ...updatePbsDto,
+    }
+
+    const updatePbs = this.pbsRepository.save(newPbs)
+
+    return updatePbs;
   }
 
   /** Pbs 제거 */
-  pbsRemove(id: number) {
-    return `This action removes a #${id} pb`;
+  async pbsRemove(id: number) {
+    const found = await this.pbsRepository.findOne({
+      where: { id: id },
+    });
+
+    this.pbsRepository.delete({
+      id: id,
+    });
+
+    if (!found) {
+      throw new NotFoundException("해당 게시물을 찾을 수 없습니다.");
+    }
+
+    return true;
   }
 }

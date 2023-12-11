@@ -1,13 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Param,
-  Delete,
-  Put,
-  Query,
-} from "@nestjs/common";
+import { Controller, Get, Post, Body, Param, Delete, Put, Query } from "@nestjs/common";
 /** Service */
 import { PbsService } from "./pbs.service";
 /** Dto */
@@ -21,39 +12,33 @@ export class PbsController {
   /** Pbs Notice Api */
   @Get()
   findAll(@Query("page") page: number, @Query("book") book: string) {
-    const pbsNotice = this.pbsService.pbsFindAll(page, book);
+    const pbsNotice = this.pbsService.pbsFindAllNotice(page, book);
 
-    const count = this.pbsService.pbsNoticeCount();
-
-    return { length: count, pbs: pbsNotice };
+    return pbsNotice;
   }
 
   /** My Page Api */
   @Get("mypage")
-  findByUserId(
-    @Query("page") page: number,
-    @Query("book") book: string,
-    @Query("userId") userId: string,
-  ) {
-    const myPagePbsNotice = this.pbsService.myPbsFindAll(page, book, userId);
+  findByUserId(@Query("page") page: number, @Query("book") book: string, @Query("userId") userId: string) {
+    const myPagePbsNotice = this.pbsService.myPbsFindAllNotice(page, book, userId);
 
-    const myPagePbsCount = this.pbsService.MyPagePbsNoticeCount(userId);
-
-    return { length: myPagePbsCount, pbs: myPagePbsNotice };
+    return myPagePbsNotice;
   }
 
   /** 상세 페이지 */
   @Get(":id")
   findOne(@Param("id") id: string) {
-    return this.pbsService.pbsFindOne(+id);
+    const detailPbs = this.pbsService.pbsFindOne(+id);
+    return detailPbs;
   }
 
+  /** Pbs 생성 */
   @Post()
   create(@Body() createPbsDto: CreatePbsDto) {
     return this.pbsService.pbsCreate(createPbsDto);
   }
 
-  /** 수정 */
+  /** Pbs 수정 */
   @Put(":id")
   update(@Param("id") id: string, @Body() updatePbsDto: UpdatePbsDto) {
     return this.pbsService.pbsUpdate(+id, updatePbsDto);
@@ -62,6 +47,8 @@ export class PbsController {
   /** 삭제 */
   @Delete(":id")
   remove(@Param("id") id: string) {
-    return this.pbsService.pbsRemove(+id);
+    const deletePbs = this.pbsService.pbsRemove(+id);
+
+    return deletePbs;
   }
 }

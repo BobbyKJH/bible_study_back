@@ -25,12 +25,12 @@ export class Pbs {
   startVerse: number;
 
   @Column()
-  endVerse: string;
+  endVerse: number;
 
   @Column("text")
   content: string;
 
-  @Column({ type: "char", length: 1, default: ShowData.PUBLIC })
+  @Column({ type: "char", length: 1, enum: ShowData })
   showData: ShowData;
 
   @UpdateDateColumn({ type: "date" })
