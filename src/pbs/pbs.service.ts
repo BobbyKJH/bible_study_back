@@ -3,12 +3,12 @@ import { Injectable, NotFoundException } from "@nestjs/common";
 import { Like, Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
 /** Dto */
-import { CreatePbsDto } from "./dto/create-pbs.dto";
-import { UpdatePbsDto } from "./dto/update-pbs.dto";
+import { CreatePbsDto } from "src/pbs/dto/create-pbs.dto";
+import { UpdatePbsDto } from "src/pbs/dto/update-pbs.dto";
 /** Entity */
-import { Pbs } from "./entities/pbs.entity";
+import { Pbs } from "src/pbs/entities/pbs.entity";
 /** Enum */
-import { ShowData } from "./const/pbs.const";
+import { ShowData } from "src/pbs/const/pbs.const";
 
 @Injectable()
 export class PbsService {

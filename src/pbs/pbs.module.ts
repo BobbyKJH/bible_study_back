@@ -1,11 +1,11 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 /** Controller */
-import { PbsController } from "./pbs.controller";
+import { PbsController } from "src/pbs/pbs.controller";
 /** Servuce */
-import { PbsService } from "./pbs.service";
+import { PbsService } from "src/pbs/pbs.service";
 /** Entity */
-import { Pbs } from "./entities/pbs.entity";
+import { Pbs } from "src/pbs/entities/pbs.entity";
 
 @Module({
   imports: [TypeOrmModule.forFeature([Pbs])],

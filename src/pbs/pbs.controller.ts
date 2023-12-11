@@ -1,9 +1,9 @@
 import { Controller, Get, Post, Body, Param, Delete, Put, Query } from "@nestjs/common";
 /** Service */
-import { PbsService } from "./pbs.service";
+import { PbsService } from "src/pbs/pbs.service";
 /** Dto */
-import { CreatePbsDto } from "./dto/create-pbs.dto";
-import { UpdatePbsDto } from "./dto/update-pbs.dto";
+import { CreatePbsDto } from "src/pbs/dto/create-pbs.dto";
+import { UpdatePbsDto } from "src/pbs/dto/update-pbs.dto";
 
 @Controller("pbs")
 export class PbsController {
