@@ -26,7 +26,7 @@ export class PbsService {
   }
 
   /** Pbs 게시판 리스트 */
-  async pbsFindAll(book: string) {
+  async pbsFindAll(page: number, book: string) {
     const findAll = await this.pbsRepository.find({
       /** 가져올 데이터 결정 */
       select: {},
@@ -36,21 +36,22 @@ export class PbsService {
       },
       where: {
         book: Like(`%${book}%`),
+        showData: ShowData.PUBLIC,
       },
     });
 
-    /** pbs게시물의 총 개수 */
+    /** pbs 게시물의 총 개수 */
     const count = await this.pbsRepository.count({
       where: {
         showData: ShowData.PUBLIC,
       },
     });
 
-    return { length: count, pbs: findAll };
+    return findAll;
   }
 
   /** MyPage Pbs 리스트 */
-  async myPbsFindAll(book: string, userId: string) {
+  async myPbsFindAll(page: number, book: string, userId: string) {
     const findAll = await this.pbsRepository.find({
       /** 가져올 데이터 결정 */
       select: {},
@@ -64,14 +65,36 @@ export class PbsService {
       },
     });
 
-    /** pbs게시물의 총 개수 */
+    /** MyPage Pbs게시물의 총 개수 */
     const count = await this.pbsRepository.count({
       where: {
         userId: userId,
       },
     });
 
-    return { length: count, pbs: findAll };
+    return findAll;
+  }
+
+  /** Pbs 게시판 개수 */
+  async pbsNoticeCount() {
+    const count = await this.pbsRepository.count({
+      where: {
+        showData: ShowData.PUBLIC,
+      },
+    });
+
+    return count;
+  }
+
+  /** My Page Pbs Count */
+  async MyPagePbsNoticeCount(userId: string) {
+    const count = await this.pbsRepository.count({
+      where: {
+        userId: userId,
+      },
+    });
+
+    return count;
   }
 
   /** Pbs 상세 페이지 */
