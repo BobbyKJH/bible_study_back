@@ -7,11 +7,8 @@ import { CreatePbsDto } from "./dto/create-pbs.dto";
 import { UpdatePbsDto } from "./dto/update-pbs.dto";
 /** Entity */
 import { Pbs } from "./entities/pbs.entity";
-
-enum ShowData {
-  PUBLIC = "Y",
-  PRIMARY = "N",
-}
+/** Enum */
+import { ShowData } from "./const/pbs.const";
 
 @Injectable()
 export class PbsService {
