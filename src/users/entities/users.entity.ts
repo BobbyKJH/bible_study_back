@@ -1,14 +1,8 @@
-import { PostsModel } from "../../posts/entities/posts.entity";
-import {
-  Column,
-  Entity,
-  ManyToOne,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from "typeorm";
-import { RoleEnum } from "../const/users.const";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+/** Enum */
+import { AuthEnum } from "src/users/const/users.const";
 
-@Entity()
+@Entity("user_info")
 export class UsersModel {
   @PrimaryGeneratedColumn()
   id: number;
@@ -16,12 +10,9 @@ export class UsersModel {
   @Column({ unique: true, length: 20, type: "varchar" })
   userId: string;
 
-  @Column()
+  @Column({ type: "varchar", length: 10 })
   userName: string;
 
-  @Column()
-  userEmail: string;
-
-  @Column({ enum: Object.values(RoleEnum), default: RoleEnum.USER })
-  auth: RoleEnum;
+  @Column({ enum: Object.values(AuthEnum), default: AuthEnum.USER })
+  auth: AuthEnum;
 }
