@@ -5,10 +5,10 @@ import { PbsController } from "src/pbs/pbs.controller";
 /** Servuce */
 import { PbsService } from "src/pbs/pbs.service";
 /** Entity */
-import { Pbs } from "src/pbs/entities/pbs.entity";
+import { PbsModel } from "src/pbs/entities/pbs.entity";
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Pbs])],
+  imports: [TypeOrmModule.forFeature([PbsModel])],
   controllers: [PbsController],
   providers: [PbsService],
 })

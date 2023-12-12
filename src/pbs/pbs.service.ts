@@ -6,15 +6,15 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { CreatePbsDto } from "src/pbs/dto/create-pbs.dto";
 import { UpdatePbsDto } from "src/pbs/dto/update-pbs.dto";
 /** Entity */
-import { Pbs } from "src/pbs/entities/pbs.entity";
+import { PbsModel } from "src/pbs/entities/pbs.entity";
 /** Enum */
 import { ShowData } from "src/pbs/const/pbs.const";
 
 @Injectable()
 export class PbsService {
   constructor(
-    @InjectRepository(Pbs)
-    private readonly pbsRepository: Repository<Pbs>,
+    @InjectRepository(PbsModel)
+    private readonly pbsRepository: Repository<PbsModel>,
   ) {}
 
   /** Pbs 게시판 리스트 */
@@ -121,13 +121,13 @@ export class PbsService {
       where: { id: id },
     });
 
-    this.pbsRepository.delete({
-      id: id,
-    });
-
     if (!found) {
       throw new NotFoundException("해당 게시물을 찾을 수 없습니다.");
     }
+
+    await this.pbsRepository.delete({
+      id: id,
+    });
 
     return true;
   }
