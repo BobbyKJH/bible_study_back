@@ -2,8 +2,8 @@ import { Column, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeor
 /** Enum */
 import { ShowData } from "src/pbs/const/pbs.const";
 
-@Entity()
-export class Qt {
+@Entity("qt")
+export class QtModel {
   @PrimaryGeneratedColumn()
   id: number;
 
