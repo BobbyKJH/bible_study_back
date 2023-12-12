@@ -25,23 +25,29 @@ export class PbsService {
         id: "DESC",
       },
       where: {
-        book: Like(`%${book}%`),
         showData: ShowData.PUBLIC,
+        book: Like(`%${book}%`)
       },
     });
 
-    /** pbs 게시물의 총 개수 */
-    const count = await this.pbsRepository.count({
-      where: {
-        showData: ShowData.PUBLIC,
-        book: Like(`%${book}%`),
-      },
-    });
-
-    return { pbs: findAll, length: count };
+    return findAll;
   }
 
-  /** MyPage Pbs 리스트 */
+  /** Pbs 게시판 개수 */
+  async pbsFindAllNoticeCount(book: string){
+    const noticeCount = await this.pbsRepository.count({
+      where: {
+        showData: ShowData.PUBLIC,
+        book: Like(`%${book}%`)
+      }
+    })
+
+    return noticeCount;
+  }
+
+  /** -------------------------------------------------- **/
+
+  /** My Page Pbs 리스트 */
   async myPbsFindAllNotice(page: number, book: string, userId: string) {
     const findAll = await this.pbsRepository.find({
       /** Data 오름차순 */
@@ -54,15 +60,22 @@ export class PbsService {
       },
     });
 
-    /** MyPage Pbs게시물의 총 개수 */
-    const count = await this.pbsRepository.count({
+    return findAll;
+  }
+
+  /** My Page Pbs 게시판 개수 */
+  async pbsFindMyPageNoticeCount(book: string, userId: string){
+    const noticeCount = await this.pbsRepository.count({
       where: {
         userId: userId,
-      },
-    });
+        book: Like(`%${book}%`)
+      }
+    })
 
-    return { pbs: findAll, length: count };
+    return noticeCount;
   }
+
+  /** -------------------------------------------------- **/
 
   /** Pbs 상세 페이지 */
   async pbsFindOne(id: number) {
@@ -85,17 +98,19 @@ export class PbsService {
     return found;
   }
 
+  /** -------------------------------------------------- **/
+
   /** Pbs 생성 */
-  pbsCreate(createPbsDto: CreatePbsDto) {
+  async createPbs(createPbsDto: CreatePbsDto) {
     const createPbs = this.pbsRepository.create({ ...createPbsDto, view: 0 });
 
-    const savePbs = this.pbsRepository.save(createPbs);
+    const savePbs = await this.pbsRepository.save(createPbs);
 
     return savePbs;
   }
 
-  /** Pbs 업데이트 */
-  async pbsUpdate(id: number, updatePbsDto: UpdatePbsDto) {
+  /** Pbs 수정 */
+  async updatePbs(id: number, updatePbsDto: UpdatePbsDto) {
     const foundPbs = this.pbsRepository.findOne({
       where: { id: id } 
     })
@@ -116,7 +131,7 @@ export class PbsService {
   }
 
   /** Pbs 제거 */
-  async pbsRemove(id: number) {
+  async removePbs(id: number) {
     const found = await this.pbsRepository.findOne({
       where: { id: id },
     });

@@ -11,18 +11,22 @@ export class PbsController {
 
   /** Pbs Notice Api */
   @Get()
-  findAll(@Query("page") page: number, @Query("book") book: string) {
-    const pbsNotice = this.pbsService.pbsFindAllNotice(page, book);
+  async findAll(@Query("page") page: number, @Query("book") book: string) {
+    const pbsNotice = await this.pbsService.pbsFindAllNotice(page, book);
 
-    return pbsNotice;
+    const count = await this.pbsService.pbsFindAllNoticeCount(book);
+
+    return { pbs: pbsNotice, length: count };
   }
 
   /** My Page Api */
   @Get("mypage")
-  findByUserId(@Query("page") page: number, @Query("book") book: string, @Query("userId") userId: string) {
-    const myPagePbsNotice = this.pbsService.myPbsFindAllNotice(page, book, userId);
+  async findByUserId(@Query("page") page: number, @Query("book") book: string, @Query("userId") userId: string) {
+    const myPagePbsNotice = await this.pbsService.myPbsFindAllNotice(page, book, userId);
 
-    return myPagePbsNotice;
+    const count = await this.pbsService.pbsFindMyPageNoticeCount(book, userId)
+    
+    return { pbs: myPagePbsNotice, length: count };
   }
 
   /** 상세 페이지 */
@@ -35,19 +39,19 @@ export class PbsController {
   /** Pbs 생성 */
   @Post()
   create(@Body() createPbsDto: CreatePbsDto) {
-    return this.pbsService.pbsCreate(createPbsDto);
+    return this.pbsService.createPbs(createPbsDto);
   }
 
   /** Pbs 수정 */
   @Put(":id")
   update(@Param("id") id: string, @Body() updatePbsDto: UpdatePbsDto) {
-    return this.pbsService.pbsUpdate(+id, updatePbsDto);
+    return this.pbsService.updatePbs(+id, updatePbsDto);
   }
 
   /** 삭제 */
   @Delete(":id")
   remove(@Param("id") id: string) {
-    const deletePbs = this.pbsService.pbsRemove(+id);
+    const deletePbs = this.pbsService.removePbs(+id);
 
     return deletePbs;
   }
