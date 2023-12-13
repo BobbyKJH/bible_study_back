@@ -18,7 +18,7 @@ export class QtController {
   /** Qt 게시판 */
   @Get()
   async findAllNotice(@Query("page") page: number, @Query("book") book: string) {
-    const findAll = await this.qtService.qtFindAllNotice(book);
+    const findAll = await this.qtService.qtFindAllNotice(page, book);
 
     const count = await this.qtService.qtFindAllNoticeCount(book);
     
@@ -28,12 +28,20 @@ export class QtController {
   /** MyPage Qt 게시판 */
   @Get("mypage")
   async findByUserId(@Query("page") page: number, @Query("book") book: string, @Query("userId") userId: string) {
-    const findMyPageAll = await this.qtService.qtFindMyPageNotice(page, book, userId)
+    const findMyPageAll = await this.qtService.qtFindMyPageNotice(userId, page, book)
     
-    const count = await this.qtService.qtFindMyPageNoticeCount(book, userId)
+    const count = await this.qtService.qtFindMyPageNoticeCount(userId, book)
     
     return { qt: findMyPageAll, length: count };
   }
+
+    /** View가 높은 순 10개 */
+    @Get("view")
+    findByView(@Query("book") book: string){
+      const view = this.qtService.findByView(book);
+  
+      return view;
+    }  
 
   /** Qt 상세 페이지 */
   @Get(':id')

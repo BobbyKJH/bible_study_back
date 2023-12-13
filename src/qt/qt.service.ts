@@ -18,7 +18,7 @@ export class QtService {
   ) {}
 
   /** Qt 게시판 */
-  async qtFindAllNotice(book: string) {
+  async qtFindAllNotice(page: number, book: string) {
     const noticeQt = await this.qtRepository.find({
       order: {
         id: "DESC",
@@ -26,7 +26,9 @@ export class QtService {
       where: {
         showData: ShowData.PUBLIC,
         book: Like(`%${book}%`)
-      }
+      },
+      take: 10,
+      skip: (page - 1) * 10
     })
 
     return noticeQt;
@@ -47,7 +49,7 @@ export class QtService {
   /** -------------------------------------------------- **/
 
   /** My Page Qt 게시판 */
-  async qtFindMyPageNotice(page: number, book: string, userId: string) {
+  async qtFindMyPageNotice(userId: string, page: number, book: string) {
     const noticeQt = await this.qtRepository.find({
       order: {
         id: "DESC",
@@ -55,14 +57,16 @@ export class QtService {
       where: {
         userId: userId,
         book: Like(`%${book}%`)
-      }
+      },
+      take: 10,
+      skip: (page - 1) * 10
     })
 
     return noticeQt;
   }
 
   /** My Page Qt 게시판 개수 */
-  async qtFindMyPageNoticeCount(book: string, userId: string){
+  async qtFindMyPageNoticeCount(userId: string, book: string){
     const noticeCount = await this.qtRepository.count({
       where: {
         userId: userId,
@@ -72,7 +76,7 @@ export class QtService {
 
     return noticeCount;
   }
-  
+
   /** -------------------------------------------------- **/
 
   /** Detail Qt */
@@ -143,5 +147,21 @@ export class QtService {
     });
 
     return true;
+  }
+
+  /** View가 높은 순 10개 */
+  async findByView(book: string){
+    const foundView = await this.qtRepository.find({
+      order: {
+        view: "DESC",
+        id: "DESC"
+      },
+      where: {
+        book: Like(`%${book}%`)
+      },
+      take: 10
+    })
+
+    return foundView; 
   }
 }
