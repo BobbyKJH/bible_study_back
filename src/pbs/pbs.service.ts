@@ -28,6 +28,8 @@ export class PbsService {
         showData: ShowData.PUBLIC,
         book: Like(`%${book}%`)
       },
+      take: 10,
+      skip: (page - 1) * 10
     });
 
     return findAll;
@@ -48,7 +50,7 @@ export class PbsService {
   /** -------------------------------------------------- **/
 
   /** My Page Pbs 리스트 */
-  async myPbsFindAllNotice(page: number, book: string, userId: string) {
+  async myPbsFindAllNotice(userId: string, page: number, book: string) {
     const findAll = await this.pbsRepository.find({
       /** Data 오름차순 */
       order: {
@@ -64,7 +66,7 @@ export class PbsService {
   }
 
   /** My Page Pbs 게시판 개수 */
-  async pbsFindMyPageNoticeCount(book: string, userId: string){
+  async pbsFindMyPageNoticeCount(userId: string, book: string){
     const noticeCount = await this.pbsRepository.count({
       where: {
         userId: userId,
@@ -145,5 +147,21 @@ export class PbsService {
     });
 
     return true;
+  }
+
+  /** View 가 높은 10개 데이터 */
+  async findByView(book: string){
+    const foundView = await this.pbsRepository.find({
+      order: {
+        view: "DESC",
+        id: "DESC"
+      },
+      where: {
+        book: Like(`%${book}%`)
+      },
+      take: 10
+    })
+
+    return foundView;
   }
 }

@@ -22,11 +22,19 @@ export class PbsController {
   /** My Page Api */
   @Get("mypage")
   async findByUserId(@Query("page") page: number, @Query("book") book: string, @Query("userId") userId: string) {
-    const myPagePbsNotice = await this.pbsService.myPbsFindAllNotice(page, book, userId);
+    const myPagePbsNotice = await this.pbsService.myPbsFindAllNotice(userId, page, book);
 
-    const count = await this.pbsService.pbsFindMyPageNoticeCount(book, userId)
+    const count = await this.pbsService.pbsFindMyPageNoticeCount(userId, book)
     
     return { pbs: myPagePbsNotice, length: count };
+  }
+
+  /** View가 높은 순 10개 */
+  @Get("view")
+  findByView(@Query("book") book: string){
+    const view = this.pbsService.findByView(book);
+
+    return view;
   }
 
   /** 상세 페이지 */
