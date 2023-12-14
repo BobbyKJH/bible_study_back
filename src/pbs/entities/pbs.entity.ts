@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 /** Enum */
 import { ShowData } from "src/pbs/const/pbs.const";
 
@@ -25,7 +25,7 @@ export class PbsModel {
   @Column({ type: "char", length: 1, enum: ShowData })
   showData: ShowData;
 
-  @UpdateDateColumn({ type: "date" })
+  @CreateDateColumn({ type: "date" })
   createAt: Date;
 
   @Column()
