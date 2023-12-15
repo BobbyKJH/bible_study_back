@@ -13,6 +13,7 @@ import { UsersModule } from "src/users/users.module";
 import { AdminModule } from 'src//admin/admin.module';
 import { AnalyticsModule } from 'src/analytics/analytics.module';
 /** Entity */
+import { AuthModule } from 'src/auth/auth.module';
 import { QtModel } from "src/qt/entities/qt.entity";
 import { PbsModel } from "src/pbs/entities/pbs.entity";
 import { UsersModel } from "src/users/entities/users.entity";
@@ -41,6 +42,7 @@ import { PostsModel } from "src/posts/entities/posts.entity";
     }),
     AdminModule,
     AnalyticsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
