@@ -4,8 +4,8 @@ import { AuthEnum } from "src/users/const/users.const";
 
 @Entity("user_info")
 export class UsersModel {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
   @Column({ unique: true, length: 20, type: "varchar" })
   userId: string;
