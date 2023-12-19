@@ -27,10 +27,10 @@ export class QtController {
 
   /** MyPage Qt 게시판 */
   @Get("mypage")
-  async findByUserId(@Query("page") page: number, @Query("book") book: string, @Query("userId") userId: string) {
-    const findMyPageAll = await this.qtService.qtFindMyPageNotice(userId, page, book)
+  async findByUserId(@Query("page") page: number, @Query("book") book: string, @Query("userId") uuid: string) {
+    const findMyPageAll = await this.qtService.qtFindMyPageNotice(uuid, page, book)
     
-    const count = await this.qtService.qtFindMyPageNoticeCount(userId, book)
+    const count = await this.qtService.qtFindMyPageNoticeCount(uuid, book)
     
     return { qt: findMyPageAll, length: count };
   }

@@ -13,7 +13,7 @@ export class CreateQtDto {
 
   showData: ShowData;
 
-  userId: string;
-
   userName: string;
+
+  uuid: string;
 }

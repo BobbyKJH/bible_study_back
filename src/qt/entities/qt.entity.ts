@@ -32,8 +32,8 @@ export class QtModel {
   view: number;
 
   @Column()
-  userId: string;
-
-  @Column()
   userName: string;
+
+  @Column({ type: "char", length: 36 })
+  uuid: string;
 }

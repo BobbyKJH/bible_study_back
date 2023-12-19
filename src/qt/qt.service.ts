@@ -49,13 +49,13 @@ export class QtService {
   /** -------------------------------------------------- **/
 
   /** My Page Qt 게시판 */
-  async qtFindMyPageNotice(userId: string, page: number, book: string) {
+  async qtFindMyPageNotice(uuid: string, page: number, book: string) {
     const noticeQt = await this.qtRepository.find({
       order: {
         id: "DESC",
       },
       where: {
-        userId: userId,
+        uuid: uuid,
         book: Like(`%${book}%`)
       },
       take: 10,
@@ -66,10 +66,10 @@ export class QtService {
   }
 
   /** My Page Qt 게시판 개수 */
-  async qtFindMyPageNoticeCount(userId: string, book: string){
+  async qtFindMyPageNoticeCount(uuid: string, book: string){
     const noticeCount = await this.qtRepository.count({
       where: {
-        userId: userId,
+        uuid: uuid,
         book: Like(`%${book}%`)
       }
     })
