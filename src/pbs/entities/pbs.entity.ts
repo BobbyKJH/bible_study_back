@@ -31,8 +31,8 @@ export class PbsModel {
   @Column()
   view: number;
 
-  @Column()
-  userId: string;
+  @Column({ type: "char", length: 36 })
+  uuid: string;
 
   @Column()
   userName: string;

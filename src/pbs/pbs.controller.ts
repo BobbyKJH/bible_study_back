@@ -21,10 +21,10 @@ export class PbsController {
 
   /** My Page Api */
   @Get("mypage")
-  async findByUserId(@Query("page") page: number, @Query("book") book: string, @Query("userId") userId: string) {
-    const myPagePbsNotice = await this.pbsService.myPbsFindAllNotice(userId, page, book);
+  async findByUserId(@Query("page") page: number, @Query("book") book: string, @Query("userId") uuid: string) {
+    const myPagePbsNotice = await this.pbsService.myPbsFindAllNotice(uuid, page, book);
 
-    const count = await this.pbsService.pbsFindMyPageNoticeCount(userId, book)
+    const count = await this.pbsService.pbsFindMyPageNoticeCount(uuid, book)
     
     return { pbs: myPagePbsNotice, length: count };
   }

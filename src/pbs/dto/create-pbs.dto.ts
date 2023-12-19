@@ -13,7 +13,7 @@ export class CreatePbsDto {
 
   showData: ShowData;
 
-  userId: string;
+  uuid: string;
 
   userName: string;
 }
