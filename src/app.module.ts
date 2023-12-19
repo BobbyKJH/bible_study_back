@@ -18,6 +18,7 @@ import { QtModel } from "src/qt/entities/qt.entity";
 import { PbsModel } from "src/pbs/entities/pbs.entity";
 import { UsersModel } from "src/users/entities/users.entity";
 import { PostsModel } from "src/posts/entities/posts.entity";
+import { AdminModel } from "./admin/entities/admin.entity";
 
 @Module({
   imports: [
@@ -37,7 +38,7 @@ import { PostsModel } from "src/posts/entities/posts.entity";
       username: process.env["DB_USERNAME"],
       password: process.env["DB_PASSWORD"],
       database: process.env["DB_DATABASE"],
-      entities: [PostsModel, UsersModel, PbsModel, QtModel],
+      entities: [PostsModel, UsersModel, PbsModel, QtModel, AdminModel],
       synchronize: true,
     }),
     AdminModule,
