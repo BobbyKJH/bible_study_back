@@ -1,7 +1,10 @@
-import { Column, Entity } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("admin")
 export class AdminModel {
+  @PrimaryGeneratedColumn()
+  id: number;
+
   @Column()
   book: string;
 

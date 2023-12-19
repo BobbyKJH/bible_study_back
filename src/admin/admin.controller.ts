@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put } from '@nestjs/common';
 /** Service */
 import { AdminService } from 'src/admin/admin.service';
 /** Dto */
@@ -15,12 +15,15 @@ export class AdminController {
   }
 
   @Get()
-  findAll() {
-    return this.adminService.findAll();
+  getFindAdmin() {
+    const findAdmin = this.adminService.findAdmin();
+
+    return findAdmin;
   }
 
-  @Put(':id')
-  update(@Param('id') id: string, @Body() updateAdminDto: UpdateAdminDto) {
-    return this.adminService.update(+id, updateAdminDto);
+  @Put()
+  update(@Body() updateAdminDto: UpdateAdminDto) {
+    const updateAdmin = this.adminService.update(updateAdminDto)
+    return updateAdmin;
   }
 }
