@@ -159,7 +159,7 @@ export class QtService {
       where: {
         book: Like(`%${book}%`)
       },
-      take: 10
+      take: 5
     })
 
     return foundView; 
