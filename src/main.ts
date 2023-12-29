@@ -1,8 +1,12 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+/** Module */
+import { AppModule } from 'app.module';
+/** 환경 변수 */
+import { config } from "dotenv";
 
 async function bootstrap() {
+  config();
   const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+  await app.listen(process.env.SERVER_PORT);
 }
 bootstrap();
