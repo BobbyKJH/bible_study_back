@@ -1,7 +1,8 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { UserAuth } from "user/const/user.const";
 
 @Entity("user_info")
-export class User {
+export class UserModel {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
@@ -11,6 +12,6 @@ export class User {
   @Column({ type: "varchar", length: 20 })
   userName: string;
 
-  @Column({ type: "varchar", length: 5 })
+  @Column({ type: "enum", enum: UserAuth, default: UserAuth.USER })
   auth: string;
 }

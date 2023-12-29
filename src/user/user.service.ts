@@ -1,26 +1,50 @@
-import { Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Injectable, NotFoundException } from '@nestjs/common';
+/** Entity */
+import { UserModel } from 'user/entities/user.entity';
+/** Dto */
+import { CreateUserDto } from 'user/dto/create-user.dto';
+import { DeleteUserDto } from 'user/dto/delete-user.dto';
 
 @Injectable()
 export class UserService {
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  constructor(
+    @InjectRepository(UserModel)
+    private readonly userRepository: Repository<UserModel>
+  ) {}
+
+  createUser(createUserDto: CreateUserDto) {
+    const createUser = this.userRepository.create(createUserDto);
+
+    const saveUser = this.userRepository.save(createUser);
+
+    return saveUser;
   }
 
-  findAll() {
-    return `This action returns all user`;
+  loginUser(userId: string) {
+    const findUser = this.userRepository.findOne({
+      where: { userId: userId }
+    });
+
+    if(!findUser) {
+      throw new NotFoundException("해당 아이디는 없는 아이디 입니다.");
+    }
+
+    return findUser;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
-  }
+  removeUser(deleteUserDto: DeleteUserDto) {
+    const { userId, userName } = deleteUserDto;
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
-  }
+    const findUser = this.userRepository.delete({
+      userId: userId, 
+      userName: userName
+    });
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+    if(!findUser) {
+      throw new NotFoundException("해당 아이디는 없는 아이디 입니다.");
+    }
+    return `${userId}가 삭제 완료 되었습니다.`;
   }
 }
