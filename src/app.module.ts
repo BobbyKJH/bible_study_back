@@ -8,11 +8,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 /** Config */
 import { typeORMConfig } from 'config/typeorm.database.config';
 import { UserModule } from './user/user.module';
+import { PbsModule } from './pbs/pbs.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(typeORMConfig),
-    UserModule
+    UserModule,
+    PbsModule
   ],
   controllers: [AppController],
   providers: [AppService],
