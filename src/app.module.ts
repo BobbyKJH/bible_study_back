@@ -9,12 +9,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeORMConfig } from 'config/typeorm.database.config';
 import { UserModule } from './user/user.module';
 import { PbsModule } from './pbs/pbs.module';
+import { QtModule } from './qt/qt.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(typeORMConfig),
     UserModule,
-    PbsModule
+    PbsModule,
+    QtModule
   ],
   controllers: [AppController],
   providers: [AppService],
